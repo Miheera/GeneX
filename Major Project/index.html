@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cancer Gene Network Explorer | Research Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+</head>
+<body>
+    <header class="top-header">
+        <div class="logo-area">
+            <svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.42 4.58a5.4 5.4 0 0 0-7.65 0l-.77.78-.77-.78a5.4 5.4 0 0 0-7.65 0C1.46 6.7 1.33 10.28 4 13l8 8 8-8c2.67-2.72 2.54-6.3.42-8.42z"></path></svg>
+            <h1>Cancer Gene Network Explorer</h1>
+        </div>
+        <div class="header-controls">
+            <label for="cancer-type">Cancer Type:</label>
+            <select id="cancer-type" class="custom-select">
+                <option value="breast" selected>Breast Cancer</option>
+                <option value="lung">Lung Cancer</option>
+                <option value="prostate">Prostate Cancer</option>
+                <option value="leukemia">Leukemia</option>
+            </select>
+        </div>
+    </header>
+
+    <main class="dashboard-layout">
+        <!-- Left Panel: Control Panel -->
+        <aside class="panel left-panel">
+            <section class="panel-section">
+                <h2 class="section-title">Selected Gene Info</h2>
+                <div class="info-card">
+                    <div class="info-row">
+                        <span class="label">Gene Name:</span>
+                        <span id="gene-name" class="value">None</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="label">Degree:</span>
+                        <span id="gene-degree" class="value">—</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="label">Disease Score:</span>
+                        <span id="gene-score" class="value">—</span>
+                    </div>
+                </div>
+            </section>
+
+            <section class="panel-section">
+                <h2 class="section-title">Perturbation Control</h2>
+                <div id="slider-group" class="control-group">
+                    <div class="slider-header">
+                        <label for="strength-slider">Perturbation Strength</label>
+                        <span id="slider-value">50%</span>
+                    </div>
+                    <input type="range" id="strength-slider" min="0" max="100" value="50" class="styled-slider">
+                </div>
+
+                <!-- Perturbation Type Toggle -->
+                <div class="control-group">
+                    <div class="perturb-toggle">
+                        <button class="perturb-btn" data-type="knockout">Knockout</button>
+                        <button class="perturb-btn active" data-type="inhibition">Inhibition</button>
+                        <button class="perturb-btn" data-type="overexpression">Overexpression</button>
+                    </div>
+                </div>
+
+                <div class="button-group">
+                    <button id="btn-simulate" class="btn btn-primary">Simulate Perturbation</button>
+                    <button id="btn-reset" class="btn btn-outline">Reset Network</button>
+                </div>
+            </section>
+        </aside>
+
+        <!-- Center Panel: Visualization Area -->
+        <section class="panel center-panel">
+            <div id="network-container">
+                <div class="viz-header">
+                    <span class="viz-title">Gene Interaction Network</span>
+                    <div class="viz-legend">
+                        <span class="legend-item"><span class="node-dot blue"></span> Normal</span>
+                        <span class="legend-item"><span class="node-dot red"></span> Perturbed</span>
+                    </div>
+                </div>
+                <!-- SVG injected by D3 -->
+                <svg id="network-svg"></svg>
+            </div>
+        </section>
+
+        <!-- Right Panel: Metrics Panel -->
+        <aside class="panel right-panel">
+            <section class="panel-section">
+                <h2 class="section-title">System Metrics</h2>
+                <div class="metrics-grid">
+                    <div class="metric-card">
+                        <span class="metric-label">Baseline Efficiency</span>
+                        <span id="metric-baseline" class="metric-value">0.842</span>
+                    </div>
+                    <div class="metric-card">
+                        <span class="metric-label">Current Efficiency</span>
+                        <span id="metric-current" class="metric-value">0.842</span>
+                    </div>
+                    <div class="metric-card">
+                        <span class="metric-label">Percentage Change</span>
+                        <span id="metric-change" class="metric-value highlight">0.00%</span>
+                    </div>
+                    <div class="metric-card info-box">
+                        <span class="metric-label">Impact Score</span>
+                        <span id="metric-impact" class="metric-value">0</span>
+                    </div>
+                </div>
+            </section>
+
+            <section class="panel-section">
+                <h2 class="section-title">Top Impacted Genes</h2>
+                <div id="impact-chart-container">
+                    <!-- Chart injected by script -->
+                    <div class="chart-placeholder">
+                        <div class="bar-row"><span>BRCA1</span> <div class="bar" style="width: 80%"></div></div>
+                        <div class="bar-row"><span>TP53</span> <div class="bar" style="width: 65%"></div></div>
+                        <div class="bar-row"><span>EGFR</span> <div class="bar" style="width: 50%"></div></div>
+                        <div class="bar-row"><span>MYC</span> <div class="bar" style="width: 40%"></div></div>
+                    </div>
+                </div>
+            </section>
+        </aside>
+    </main>
+
+    <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+SEARCH INFORMATION
+==================
+
+Download Date:       8/23/2026, 5:53:37 AM
+
+SEARCH DETAILS
+--------------
+Search Terms:        Breast Carcinoma (CUI: C0678222)
+Analysis Type:       DISEASES
+Data Type:           Summary
+Source:              ALL
+Tab:                 GDA
+Total Results:       10011
+
+CUSTOM SCORE CONFIGURATION
+--------------------------
+My Score Active:     No
+
+FILTERS APPLIED
+---------------
+
+
+DISPLAY SETTINGS
+----------------
+Visible Columns:     geneSymbol, geneDescription, numDiseasesAssociatedToGene, numVariantsAssociatedToGene, score, normalized_score, sourceScore, numPMIDsupportingAssociation, numCTs, numberChemsIncludedInEvidence, numberPmidsWithChemsIncludedInEvidence, numDBSNPsupportingAssociation, yearInitial, yearFinal, EI, geneDSI, geneDPI, genepLI
+
+==================

@@ -1,0 +1,11 @@
+# Cancer Gene Network Explorer — backend dependencies
+# Python 3.10+
+
+fastapi==0.115.5
+uvicorn[standard]==0.32.1
+networkx==3.4.2
+pandas==2.2.3
+pydantic==2.10.3
+
+# Optional: for faster startup on large graphs
+# scipy==1.14.1

@@ -1,0 +1,67 @@
+# -- Python bytecode ------------------------------------------------------------
+__pycache__/
+*.py[cod]
+*$py.class
+
+# -- Distribution / packaging ---------------------------------------------------
+dist/
+build/
+*.egg-info/
+*.egg
+MANIFEST
+
+# -- Test / coverage ------------------------------------------------------------
+.pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+.tox/
+.nox/
+coverage.xml
+*.cover
+
+# -- Virtual environments -------------------------------------------------------
+venv/
+.venv/
+env/
+ENV/
+.env
+
+# -- IDEs & editors -------------------------------------------------------------
+.vscode/
+.idea/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+.project
+.classpath
+.settings/
+*.swp
+*~
+
+# -- OS artefacts ---------------------------------------------------------------
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
+
+# -- Windows shortcuts / shell links -------------------------------------------
+*.lnk
+
+# -- Jupyter --------------------------------------------------------------------
+.ipynb_checkpoints/
+*.ipynb
+
+# -- Logs & temporaries ---------------------------------------------------------
+*.log
+*.tmp
+*.bak
+
+# -- Large raw data (too big for git; see Major Project/backend/data/DATA_SOURCES.md) -----
+major_project_dataset/
+Major Project/backend/data/raw/string/

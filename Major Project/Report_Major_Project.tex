@@ -1,0 +1,792 @@
+% ============================================================
+%  Breast Cancer Gene Network Perturbation Simulator
+%  Major Project Report
+%  Compile with: pdflatex → bibtex → pdflatex × 2
+% ============================================================
+
+\documentclass[12pt,a4paper]{report}
+
+% ── Packages ────────────────────────────────────────────────
+\usepackage[a4paper, margin=1in]{geometry}
+\usepackage{fontenc}
+\usepackage{inputenc}
+\usepackage{microtype}
+\usepackage{setspace}
+\usepackage{titlesec}
+\usepackage{fancyhdr}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{url}
+\usepackage{natbib}
+\usepackage{parskip}
+\usepackage{enumitem}
+\usepackage{tocloft}
+\usepackage{afterpage}
+
+% ── Colour palette ──────────────────────────────────────────
+\definecolor{primaryblue}{RGB}{30,90,160}
+\definecolor{codegray}{RGB}{245,245,245}
+\definecolor{codegreen}{RGB}{0,128,0}
+\definecolor{codepurple}{RGB}{128,0,128}
+\definecolor{darkgray}{RGB}{80,80,80}
+
+% ── Hyperref setup ──────────────────────────────────────────
+\hypersetup{
+  colorlinks=true,
+  linkcolor=primaryblue,
+  citecolor=primaryblue,
+  urlcolor=primaryblue,
+  pdftitle={Breast Cancer Gene Network Perturbation Simulator},
+  pdfauthor={},
+}
+
+% ── Line spacing ────────────────────────────────────────────
+\onehalfspacing
+
+% ── Header / footer ─────────────────────────────────────────
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small\textit{Breast Cancer Gene Network Perturbation Simulator}}
+\fancyhead[R]{\small\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+\fancypagestyle{plain}{
+  \fancyhf{}
+  \fancyfoot[C]{\thepage}
+  \renewcommand{\headrulewidth}{0pt}
+}
+
+% ── Section title formatting ─────────────────────────────────
+\titleformat{\chapter}[display]
+  {\normalfont\huge\bfseries\color{primaryblue}}
+  {\chaptertitlename\ \thechapter}{18pt}{\Huge}
+\titleformat{\section}{\normalfont\Large\bfseries\color{primaryblue}}{\thesection}{1em}{}
+\titleformat{\subsection}{\normalfont\large\bfseries}{\thesubsection}{1em}{}
+\titleformat{\subsubsection}{\normalfont\normalsize\bfseries}{\thesubsubsection}{1em}{}
+
+% ── Code listing style ───────────────────────────────────────
+\lstdefinestyle{pythonstyle}{
+  backgroundcolor=\color{codegray},
+  commentstyle=\color{codegreen},
+  keywordstyle=\color{primaryblue}\bfseries,
+  stringstyle=\color{codepurple},
+  basicstyle=\ttfamily\small,
+  breaklines=true,
+  captionpos=b,
+  frame=single,
+  rulecolor=\color{gray!40},
+  numbers=left,
+  numberstyle=\tiny\color{darkgray},
+  tabsize=4,
+  language=Python
+}
+
+% ── Algorithm style ─────────────────────────────────────────
+\algrenewcommand\algorithmicrequire{\textbf{Input:}}
+\algrenewcommand\algorithmicensure{\textbf{Output:}}
+
+% ════════════════════════════════════════════════════════════
+\begin{document}
+
+% ── Title Page ──────────────────────────────────────────────
+\begin{titlepage}
+  \centering
+  \vspace*{2cm}
+  {\huge\bfseries\color{primaryblue}
+    Breast Cancer Gene Network\\[0.4em]
+    Perturbation Simulator\par}
+  \vspace{1.5cm}
+  {\Large\bfseries Major Project Report\par}
+  \vspace{0.5cm}
+  {\large Phases I \& II — Structural Analysis of Protein–Protein\\
+  Interaction Networks in Breast Cancer\par}
+  \vspace{2cm}
+  \rule{0.6\textwidth}{0.5pt}\\[1em]
+  {\large Department of Computer Science \& Engineering\par}
+  \vspace{0.4cm}
+  {\large Academic Year 2025--2026\par}
+  \vspace{3cm}
+  \vfill
+  {\small Submitted in partial fulfilment of the requirements for the\\
+  Bachelor of Engineering degree.\par}
+\end{titlepage}
+
+% ── Abstract ────────────────────────────────────────────────
+\chapter*{Abstract}
+\addcontentsline{toc}{chapter}{Abstract}
+
+Cancer is fundamentally a disease of broken communication networks. The proteins inside a cell form a complex web of interactions, and the malignant behaviour observed in breast cancer arises not merely from isolated genetic mutations but from the cascading structural failures those mutations induce across the entire protein–protein interaction (PPI) network. This project addresses a gap in existing tooling: no interactive, structurally transparent, real-time tool currently exists for exploring how specific gene perturbations affect the topology of the breast cancer PPI network.
+
+The system developed here integrates high-confidence PPI data from STRING \citep{szklarczyk2023string} with disease-gene associations from DisGeNET \citep{pinero2020disgenet} and a curated list of eight established breast cancer driver genes from COSMIC to build a weighted, undirected NetworkX graph. A FastAPI backend exposes this graph over two REST endpoints. A Vanilla HTML5 and D3.js frontend renders the network as an interactive force-directed visualisation.
+
+Phase I delivered the complete interactive dashboard — graph loading, node-click interaction, perturbation controls, and a single frontend-only knockout visualisation without backend computation. Phase II is the core scientific contribution: it upgrades the system from one frontend-simulated perturbation type to three fully computed perturbation modes (knockout, inhibition, and overexpression) grounded in the Albert, Jeong \& Barab\'asi targeted attack model \citep{albert2000error}. The Phase II backend computes global network efficiency via the Latora--Marchiori formula \citep{latora2001efficient} and betweenness centrality deltas per \citet{freeman1977set}, returning efficiency change percentages, top impacted genes, and network fragmentation data to the frontend in real time.
+
+The tool deliberately prioritises structural transparency over predictive accuracy, distinguishing itself from black-box GNN approaches \citep{roohani2023gears, petre2022explainability} by ensuring that every output is traceable to a mathematical formula and every formula is traceable to a peer-reviewed paper.
+
+\vspace{1em}
+\noindent\textbf{Keywords:} breast cancer, protein–protein interaction network, scale-free network, global efficiency, betweenness centrality, perturbation simulation, FastAPI, NetworkX, D3.js
+
+% ── Table of Contents ───────────────────────────────────────
+\tableofcontents
+\listoffigures
+\listoftables
+
+% ════════════════════════════════════════════════════════════
+\chapter{Introduction}
+% ════════════════════════════════════════════════════════════
+
+\section{Motivation}
+
+Breast cancer kills approximately 685{,}000 people globally each year and remains the most commonly diagnosed cancer in women worldwide. Despite decades of research, the cellular mechanisms driving malignancy are still incompletely understood, in large part because cancer is not a single-gene disorder — it is a disorder of cellular communication networks. Proteins interact with hundreds of partners; transcription factors regulate thousands of downstream targets; signalling cascades span the entire proteome. Understanding how a mutation in one gene propagates damage through this network is a systems-level question that single-gene reductionism cannot answer.
+
+Network science provides the mathematical framework for studying such systems. A protein–protein interaction (PPI) network encodes genes as nodes and experimentally validated interactions as edges. Metrics defined on this graph — path lengths, node centralities, component structure — quantify structural properties that determine how robustly the cell can route information in the presence of disruption.
+
+This project builds an interactive tool that allows researchers and students to ask: \textit{if this specific gene is knocked out or inhibited, by how much does the breast cancer PPI network lose its capacity for information routing, and which other genes become structurally critical as a result?}
+
+\section{Problem Statement}
+
+Two broad categories of tools exist for computational perturbation analysis.
+
+The first category is machine-learning-based predictors — models such as GEARS \citep{roohani2023gears}, and approaches from \citet{gonzalez2024combinatorial} and \citet{miladinovic2025silico} — which take a gene perturbation as input and predict transcriptomic responses. These models are powerful but fundamentally opaque. Their outputs emerge from millions of learned parameters with no direct mechanistic interpretation. \citet{petre2022explainability} dedicate an entire paper to this explainability gap in GNN-based biological analysis.
+
+The second category is static analysis tools such as the CRANE method of \citet{lim2021generating}, which detect disease-specific gene modules and test their statistical significance. These tools produce fixed reports; they do not support interactive what-if exploration.
+
+No existing tool is simultaneously (a) interactive and real-time, (b) structurally transparent with traceable formulae, (c) focused specifically on breast cancer PPI networks, and (d) capable of modelling three biologically distinct perturbation types with live metric computation. This project fills that gap.
+
+\section{Objectives}
+
+\begin{enumerate}[leftmargin=*, label=\arabic*.]
+  \item Construct a high-confidence weighted PPI graph for breast cancer genes from STRING, DisGeNET, and COSMIC data.
+  \item Implement a FastAPI backend that serves the graph and computes perturbation metrics on demand.
+  \item Implement three biologically grounded perturbation modes — knockout, inhibition, and overexpression — using graph-theoretic operations validated by the network science literature.
+  \item Measure perturbation impact using global network efficiency \citep{latora2001efficient} and betweenness centrality \citep{freeman1977set}.
+  \item Render the network and perturbation results interactively in a browser-based D3.js dashboard.
+  \item Ensure every algorithmic decision is traceable to a peer-reviewed paper.
+\end{enumerate}
+
+\section{Scope and Deliverables}
+
+Phase I (complete): the full three-column dashboard with D3.js force-directed graph, node interaction, perturbation controls, and a single frontend-only knockout perturbation — a visual node removal with no backend metric computation.
+
+Phase II (complete): the full perturbation computation engine. The primary upgrade from Phase I is the expansion from one simulated perturbation type to three biologically grounded, backend-computed perturbation modes (knockout, inhibition, overexpression), with real-time NetworkX metric computation — global efficiency and betweenness centrality — returned to the frontend.
+
+Phase III (future work): multi-gene combinatorial perturbation, synthetic lethality detection, and network propagation analysis.
+
+\section{Report Organisation}
+
+Chapter 2 reviews the literature across eight thematic categories. Chapter 3 specifies functional and non-functional requirements. Chapter 4 describes the system design and architecture. Chapter 5 details the algorithms. Chapter 6 covers the technology stack. Chapter 7 documents Phase I implementation. Chapter 8 documents Phase II implementation. Chapter 9 presents results and expected outputs. Chapter 10 describes future work. Chapter 11 concludes.
+
+% ════════════════════════════════════════════════════════════
+\chapter{Literature Survey}
+% ════════════════════════════════════════════════════════════
+
+\section{Foundational Network Biology}
+
+The theoretical basis for treating a cell as a network rather than a collection of isolated parts was formalised by \citet{barabasi2004network}. They demonstrated that most biological networks — PPI networks, metabolic networks, gene regulatory networks — are \textit{scale-free}: their degree distributions follow a power law, meaning a small number of highly connected hub nodes co-exist with a large majority of low-degree nodes. This topology has a critical biological consequence: hub genes coordinate hundreds of interactions simultaneously, making their disruption disproportionately damaging.
+
+\citet{albert2000error} provided the quantitative validation. They showed that scale-free networks exhibit two fundamentally different responses to two kinds of damage. Under random node removal, the network degrades gracefully because randomly selected nodes are almost always low-degree (as required by the power law). Under targeted removal of the highest-degree hubs, the network collapses rapidly — connectivity and path lengths degrade catastrophically after only a small fraction of hubs are removed. This asymmetry, robust to random failure but fragile under targeted attack, is the theoretical foundation for why drug-induced gene inhibition in a hub gene is so clinically significant.
+
+\citet{markowetz2010understand} argues that controlled perturbation is the primary experimental strategy for understanding cellular function. The central thesis is that knocking out or silencing specific genes and observing the consequences is more informative than passive observation of steady-state expression, because the response to perturbation reveals causal rather than merely correlational relationships.
+
+\section{Perturbation Modelling}
+
+\citet{santolini2018predicting} provide critical theoretical justification for the structural approach taken in this project. They demonstrate that perturbation patterns — which genes are affected when a specific gene is disrupted — can be predicted from network topology alone, without gene expression data. This finding validates the decision to use a PPI network and graph metrics rather than transcriptomic data as the primary analytical substrate.
+
+\citet{morgan2019perturbation} describe a wet-lab-driven approach to gene regulatory network inference, physically knocking down 40 cancer genes with siRNA and using regression methods (LASSO, LSCO, TLSCO) to infer the regulatory network from perturbation-response data. Their biological framing of inhibition as edge-weight reduction is directly adopted in this project's inhibition perturbation type, while their observation that siRNA knockdown produces different network states than full knockout motivates the distinction between the knockout and inhibition modes.
+
+\citet{judeh2021gene} examine perturbation in the context of probabilistic Boolean networks (PBNs), where genes are modelled as binary (ON/OFF) state variables with transition rules. While mathematically rigorous, PBNs require knowledge of the directional regulatory logic for each gene pair — whether an interaction is activating or inhibiting, and what the Boolean gate is. STRING provides confidence scores for physical interactions but not regulatory direction, making PBNs inapplicable to PPI-based analysis.
+
+\citet{ideker2012differential} introduce differential network biology: rather than analysing a single static network, the methodology compares network topology across conditions (e.g., healthy versus cancerous tissue). This framing informs the perturbation simulator's design philosophy — the baseline and perturbed graphs are compared structurally, and the delta metrics quantify the difference.
+
+\section{Efficiency and Centrality Metrics}
+
+\citet{latora2001efficient} define global network efficiency as:
+\begin{equation}
+  E(G) = \frac{1}{n(n-1)} \sum_{i \neq j} \frac{1}{d(i,j)}
+  \label{eq:efficiency}
+\end{equation}
+where $n$ is the number of nodes and $d(i,j)$ is the shortest weighted path distance between nodes $i$ and $j$. The key property of this definition is its graceful handling of disconnected networks: if no path exists between a node pair, $d(i,j) = \infty$ and $1/d(i,j) = 0$, so disconnected pairs simply contribute zero to the sum without invalidating the calculation. This property is essential for knockout perturbations, which can fragment the network.
+
+\citet{crucitti2003efficiency} validate the efficiency metric specifically on scale-free networks under error and attack conditions, confirming that it captures hub vulnerability as characterised by \citet{albert2000error}. Their analysis establishes global efficiency as the appropriate metric for this system, not merely a convenient one.
+
+\citet{freeman1977set} defines betweenness centrality $C_B(v)$ for node $v$ as:
+\begin{equation}
+  C_B(v) = \sum_{s \neq v \neq t} \frac{\sigma(s,t|v)}{\sigma(s,t)}
+  \label{eq:betweenness}
+\end{equation}
+where $\sigma(s,t)$ is the total number of shortest paths from node $s$ to node $t$, and $\sigma(s,t|v)$ is the number of those paths that pass through $v$. A node with high betweenness is a structural bridge; removing it severs the indirect communication pathways that route through it. After a perturbation, this project tracks the \textit{change} in betweenness for every remaining node, identifying genes that become newly critical (compensatory hubs) as well as those that lose centrality.
+
+\citet{jeong2001lethality} demonstrated empirically that high-degree and high-betweenness proteins in yeast PPI networks are significantly more likely to be essential for cell viability when deleted. This is the biological grounding for interpreting betweenness delta as a proxy for clinical significance.
+
+\section{Cancer Network Biology}
+
+\citet{barabasi2011network} establish network medicine as a discipline: disease genes cluster non-randomly in the interactome, forming connected ``disease modules'', and the size, cohesion, and interconnectedness of these modules are predictive of disease severity and drug target druggability.
+
+\citet{creixell2021pathway} apply pathway and network analysis to cancer genomics specifically, demonstrating that driver mutations preferentially affect network hubs and pathway bottlenecks — precisely the structural properties this simulator quantifies.
+
+\citet{simhal2023gene} provide a recent application of gene interaction network analysis to a haematological malignancy (multiple myeloma), using graph metrics to detect dysregulated immune signalling modules. Their methodology parallels the structural analysis pipeline implemented here, providing validation that the approach is applicable and clinically informative in contemporary cancer research.
+
+\citet{mambetsariev2023clinical} describe clinical network systems biology in solid tumours, advocating for the integration of network topology with clinical variables. Their framing of the ``cancer multiverse'' — the landscape of possible network states under different driver gene combinations — anticipates the multi-gene perturbation functionality planned for Phase III.
+
+\section{Why Not Machine Learning or GNNs?}
+
+Several state-of-the-art tools predict transcriptomic responses to genetic perturbations using deep learning. GEARS \citep{roohani2023gears} uses a graph neural network to predict genome-wide expression changes under single and combinatorial gene knockouts. \citet{gonzalez2024combinatorial} combine causal inference with neural networks to predict therapeutic perturbations. \citet{miladinovic2025silico} apply large perturbation models for \textit{in silico} biological discovery. \citet{wu2025contextualizing} contextualise perturbation experiments through language model embeddings.
+
+The fundamental objection to these approaches for this project is not accuracy — the GNN models are impressive predictors — but explainability. \citet{petre2022explainability} demonstrate that GNN-based biological predictions currently cannot be reliably attributed to specific biological mechanisms. The outputs emerge from millions of learned parameters, not from interpretable structural operations. \citet{zheng2023survey} survey the broader landscape of GNN biological applications and acknowledge this limitation as an open problem.
+
+This project explicitly rejects that paradigm. Every output the simulator produces is traceable to a formula. Every formula is traceable to a paper. That structural transparency is the design goal.
+
+\section{Community Detection}
+
+\citet{blondel2008fast} introduce the Louvain algorithm for community detection — efficient identification of densely connected subgraphs within a large network. \citet{newman2006modularity} establish the modularity metric $Q$ that these algorithms optimise. \citet{lim2021generating} apply community detection to breast cancer PPI networks, generating ensembles of gene regulatory networks to assess the robustness of disease modules.
+
+Community detection captures the static modular structure of the baseline network and is used in this project to contextualise perturbation results — a hub gene whose knockout fragments the network often sits at the interface of two communities. Full community-aware perturbation analysis is planned for Phase III.
+
+\section{Network Propagation}
+
+\citet{cowen2017network} provide a comprehensive review of network propagation as a universal framework for biological network analysis. Propagation spreads a signal from a set of seed nodes through the network, with each node accumulating signal proportional to its proximity to the seeds. \citet{vanunu2010associating} apply propagation to disease-gene association, finding genes related to a disease by propagating from known disease genes through the interactome.
+
+Network propagation answers a different question from the one this project addresses. Propagation identifies which genes are \textit{functionally related} to a disease; this project quantifies how \textit{structural communication capacity changes} when a specific gene is perturbed. These are complementary, not competing, analyses. Propagation from post-perturbation affected nodes is identified as a Phase III extension.
+
+\section{Data Sources}
+
+\citet{szklarczyk2023string} describe the STRING database in its 2023 release: over 67 million proteins across 14{,}094 organisms, with interaction confidence scores derived from co-expression, experimental evidence, database annotation, and text mining. Filtering to confidence $\geq 700$ retains only high-confidence, well-evidenced interactions.
+
+\citet{pinero2020disgenet} describe DisGeNET, a comprehensive knowledge platform linking over 1.1 million gene–disease associations curated from genomics databases, model organisms, and the biomedical literature. Disease scores from DisGeNET are used as node attributes in this project.
+
+% ════════════════════════════════════════════════════════════
+\chapter{Requirements}
+% ════════════════════════════════════════════════════════════
+
+\section{Functional Requirements}
+
+\begin{enumerate}[label=FR\arabic*., leftmargin=3em]
+  \item The system shall load a pre-processed breast cancer PPI graph from a CSV file at server startup.
+  \item The system shall expose a \texttt{GET /api/graph/breast\_cancer} endpoint that returns all nodes and edges as JSON.
+  \item The system shall expose a \texttt{POST /api/perturb} endpoint accepting a target gene, perturbation type, and perturbation strength.
+  \item The perturbation engine shall support three perturbation types: \textbf{knockout}, \textbf{inhibition}, and \textbf{overexpression}.
+  \item For knockout, the engine shall remove the target node and all incident edges from a copy of the baseline graph.
+  \item For inhibition, the engine shall reduce the edge weights of all edges incident to the target node by a factor $(1 - \text{strength})$.
+  \item For overexpression, the engine shall increase the edge weights of all edges incident to the target node by a factor $(1 + \text{strength})$.
+  \item The engine shall compute global efficiency using the Latora--Marchiori formula (Equation~\ref{eq:efficiency}) with Dijkstra shortest paths on the perturbed graph.
+  \item The engine shall return an efficiency delta percentage relative to the precomputed baseline.
+  \item The engine shall compute betweenness centrality (Equation~\ref{eq:betweenness}) on the perturbed graph and return the top five genes with the largest positive and top five with the largest negative betweenness delta.
+  \item The engine shall detect network fragmentation and return the list of isolated genes if the network splits into multiple connected components.
+  \item The frontend shall render the graph as an interactive D3.js force-directed simulation.
+  \item Nodes shall have radii proportional to their degree; edges shall have opacity proportional to their weight.
+  \item Clicking a node shall populate the left panel with gene information.
+  \item The frontend shall visually update on perturbation: knocked-out nodes fade and are removed; inhibited or overexpressed nodes change colour and scale.
+  \item A reset control shall restore the baseline graph state.
+\end{enumerate}
+
+\section{Non-Functional Requirements}
+
+\begin{enumerate}[label=NF\arabic*., leftmargin=3em]
+  \item The backend shall precompute and cache baseline efficiency and betweenness centrality at startup to avoid per-request recomputation.
+  \item The baseline graph shall never be mutated; all perturbations shall operate on deep copies.
+  \item The perturbation endpoint shall respond within five seconds for single-gene perturbations on the target network (\textasciitilde500 nodes, \textasciitilde1{,}300 edges).
+  \item All algorithmic outputs shall be traceable to peer-reviewed papers.
+  \item The codebase shall include inline comments referencing the corresponding paper for every non-trivial formula.
+  \item The frontend shall include a mock-data fallback to remain functional if the backend is offline.
+\end{enumerate}
+
+% ════════════════════════════════════════════════════════════
+\chapter{System Design and Architecture}
+% ════════════════════════════════════════════════════════════
+
+\section{System Overview}
+
+The system has three layers: a data preprocessing pipeline that runs offline, a Python backend that serves at runtime, and a browser-based frontend. Figure~\ref{fig:architecture} shows the full architecture.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.95\textwidth]{architecture_block.png}
+  \caption{System architecture. Data sources feed an offline preprocessing pipeline that produces a CSV. The FastAPI backend loads the CSV at startup and exposes two REST endpoints. The HTML5/D3.js frontend renders the network and perturbation results in the browser.}
+  \label{fig:architecture}
+\end{figure}
+
+\section{Data Pipeline}
+
+Three data sources are integrated during preprocessing, which runs offline before deployment:
+
+\begin{itemize}
+  \item \textbf{STRING} \citep{szklarczyk2023string}: protein–protein interaction data. Each interaction carries a combined confidence score from 0 to 1000. The pipeline filters to confidence $\geq 700$, retaining only high-confidence, experimentally well-supported interactions. This threshold produces approximately 1{,}300 edges across approximately 500 nodes after breast-cancer filtering.
+  \item \textbf{DisGeNET} \citep{pinero2020disgenet}: disease–gene association data. This source provides disease scores for nodes — a quantification of how strongly each gene is implicated in breast cancer.
+  \item \textbf{COSMIC}: the driver gene list — TP53, BRCA1, BRCA2, HER2, PIK3CA, ESR1, MYC, EGFR — the eight genes most consistently identified as breast cancer drivers across large cohort studies. These genes receive elevated disease scores.
+\end{itemize}
+
+The pipeline filters both STRING and DisGeNET to breast cancer, joins them on gene identifier, deduplicates interactions (STRING is symmetric; duplicate A-B and B-A entries are collapsed), normalises confidence scores from the 0--1000 integer range to a 0.0--1.0 float range, and exports a CSV.
+
+A critical preprocessing decision is weight inversion. STRING confidence scores are similarity scores — higher means stronger interaction. Dijkstra's algorithm, however, minimises path weight, treating lower weight as easier traversal. To reconcile these, the pipeline computes a \texttt{path\_weight} attribute for each edge:
+\begin{equation}
+  \text{path\_weight}(e) = \frac{1}{\text{normalised\_confidence}(e)}
+\end{equation}
+A high-confidence interaction (confidence 950, normalised 0.95) becomes path weight 1.05 — a short, easy-to-traverse path. A low-confidence interaction (confidence 400, normalised 0.40) becomes path weight 2.5 — a longer, harder path. If this inversion is omitted, the efficiency calculation is inverted: weakly connected genes appear closer than strongly connected ones.
+
+\section{Backend Architecture}
+
+The backend consists of four Python modules:
+
+\begin{itemize}
+  \item \textbf{graph\_loader.py}: loads the CSV at startup, constructs the NetworkX weighted undirected graph, attaches \texttt{degree}, \texttt{disease\_score}, and \texttt{label} node attributes, and computes \texttt{path\_weight} edge attributes.
+  \item \textbf{perturbation.py}: implements all perturbation logic. At module initialisation it precomputes and caches \texttt{E\_baseline} and \texttt{BC\_baseline}. The \texttt{perturb()} function creates a deep copy of the baseline graph, applies the requested perturbation, computes metrics, and returns delta values.
+  \item \textbf{main.py}: the FastAPI application. Defines the two REST endpoints, configures CORS, and handles HTTP error codes (404 for unknown gene, 500 for computation errors).
+  \item \textbf{models.py}: Pydantic request and response models with field validation.
+\end{itemize}
+
+\section{API Specification}
+
+\begin{table}[H]
+  \centering
+  \caption{REST API endpoints}
+  \label{tab:api}
+  \begin{tabularx}{\textwidth}{lllX}
+    \toprule
+    \textbf{Method} & \textbf{Endpoint} & \textbf{Status} & \textbf{Description} \\
+    \midrule
+    GET & \texttt{/api/graph/breast\_cancer} & 200 & Returns full node and edge list as JSON. \\
+    POST & \texttt{/api/perturb} & 200 & Accepts perturbation request; returns metric deltas. \\
+    GET & \texttt{/health} & 200 & Health check; returns server uptime. \\
+    \bottomrule
+  \end{tabularx}
+\end{table}
+
+The POST \texttt{/api/perturb} request body follows the schema defined in \texttt{models.py}:
+\begin{itemize}
+  \item \texttt{target\_gene} (string): the gene identifier to perturb.
+  \item \texttt{perturbation\_type} (enum): \texttt{knockout}, \texttt{inhibition}, or \texttt{overexpression}.
+  \item \texttt{strength} (float, 0.0--1.0): perturbation strength; ignored for knockout.
+\end{itemize}
+
+The response includes \texttt{efficiency\_delta} (float, percentage), \texttt{top\_impacted} (list of gene/delta pairs), \texttt{fragmented} (boolean), and \texttt{isolated\_genes} (list of gene names, populated only when \texttt{fragmented} is true).
+
+\section{Frontend Architecture}
+
+The frontend is a single-page application built in Vanilla HTML5, CSS3, and JavaScript with D3.js v7. It communicates with the backend over REST and falls back to mock data if the backend is unreachable. Three columns divide the interface:
+
+\begin{itemize}
+  \item \textbf{Left panel}: gene selector, perturbation type toggle (Knockout / Inhibition / Overexpression), strength slider (hidden for knockout), and Simulate / Reset buttons.
+  \item \textbf{Centre panel}: D3.js force-directed graph. Node radius is proportional to degree; edge opacity is proportional to edge weight.
+  \item \textbf{Right panel}: efficiency delta card (colour-coded red/green), betweenness delta bar chart, fragmentation warning if applicable.
+\end{itemize}
+
+\section{UML Diagrams}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.85\textwidth]{class_diagram.png}
+  \caption{UML class diagram showing the relationships between the four backend modules and the frontend JavaScript objects.}
+  \label{fig:classdiagram}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.75\textwidth]{usecase_diagram.png}
+  \caption{UML use case diagram. The Researcher actor interacts with the frontend to select genes, configure perturbations, and view structural impact metrics.}
+  \label{fig:usecasediagram}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.85\textwidth]{sequence_diagram.png}
+  \caption{UML sequence diagram for a single perturbation request: from user click through frontend POST, backend deep-copy and computation, to JSON response and visual update.}
+  \label{fig:sequencediagram}
+\end{figure}
+
+% ════════════════════════════════════════════════════════════
+\chapter{Algorithms}
+% ════════════════════════════════════════════════════════════
+
+\section{Theoretical Foundation: Scale-Free Networks and Hub Vulnerability}
+
+\citet{barabasi2004network} establish that PPI networks are scale-free, with degree distributions following:
+\begin{equation}
+  P(k) \sim k^{-\gamma}
+\end{equation}
+where $k$ is node degree and $\gamma$ is the power-law exponent (typically 2--3 for biological networks). This distribution implies that most genes interact with only a handful of partners, while a small set of hub genes — TP53, BRCA1, MYC — interact with hundreds.
+
+\citet{albert2000error} showed that targeted removal of hubs causes rapid network disintegration. The critical threshold for targeted attack is far lower than for random failure. For the breast cancer network, this means that drug-induced inhibition of a hub gene is structurally catastrophic in a way that random genetic variation is not.
+
+\section{Global Network Efficiency}
+
+Global efficiency \citep{latora2001efficient} quantifies the average capacity for information routing across all node pairs:
+\begin{equation}
+  E(G) = \frac{1}{n(n-1)} \sum_{i \neq j} \frac{1}{d(i,j)}
+\end{equation}
+
+For a weighted graph with edge attribute \texttt{path\_weight}, $d(i,j)$ is the sum of \texttt{path\_weight} values along the shortest weighted path from $i$ to $j$, computed by Dijkstra's algorithm. Disconnected node pairs contribute 0 (since $1/\infty = 0$), making the formula well-defined after fragmentation.
+
+The efficiency delta after perturbation is:
+\begin{equation}
+  \Delta E\% = \frac{E(G') - E(G)}{E(G)} \times 100
+\end{equation}
+
+A negative $\Delta E\%$ indicates network communication degradation. \citet{crucitti2003efficiency} validated this metric on scale-free networks under the same targeted attack conditions modelled here.
+
+\section{Betweenness Centrality and Compensatory Hubs}
+
+Per \citet{freeman1977set}, normalised betweenness centrality for node $v$ is:
+\begin{equation}
+  C_B(v) = \frac{1}{(n-1)(n-2)} \sum_{s \neq v \neq t} \frac{\sigma(s,t|v)}{\sigma(s,t)}
+\end{equation}
+
+After perturbation, the betweenness delta for each node $v$ is:
+\begin{equation}
+  \Delta C_B(v) = C_B^{G'}(v) - C_B^{G}(v)
+\end{equation}
+
+Genes with large positive $\Delta C_B$ are \textit{compensatory hubs} — nodes through which the network has rerouted communication to compensate for the disrupted gene. \citet{jeong2001lethality} demonstrated that high-centrality proteins are disproportionately likely to be essential, making compensatory hubs clinically significant secondary drug targets.
+
+\section{The Three Perturbation Types}
+
+Figure~\ref{fig:perturbflow} illustrates the full perturbation pipeline.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.75\textwidth]{perturbation_result.png}
+  \caption{Perturbation workflow and visual output. Left: the perturbed graph with a node highlighted in red following inhibition. Right: the metric panel showing efficiency delta and top impacted genes.}
+  \label{fig:perturbflow}
+\end{figure}
+
+\subsection{Knockout}
+
+Knockout models complete gene deletion or total loss of function — a gene is absent from the cell, and all interactions it participated in are severed simultaneously. In graph terms:
+\begin{equation}
+  G' = G - \{v\} \quad \text{(remove node } v \text{ and all incident edges)}
+\end{equation}
+
+This corresponds directly to the targeted attack model of \citet{albert2000error}. In NetworkX, \texttt{G.remove\_node(v)} handles edge cleanup automatically.
+
+The biological nuance, noted by \citet{morgan2019perturbation}, is that real knockout can induce network rewiring — the cell compensates by upregulating alternative pathways — which means the perturbed network may not reflect the native topology. This motivates the inhibition mode as the more biologically faithful intervention for drug studies.
+
+\subsection{Inhibition}
+
+Inhibition models partial loss of function: siRNA knockdown, drug inhibition, or allosteric suppression. The gene remains in the network; its interactions are weakened proportionally to the perturbation strength $s \in [0,1]$:
+\begin{equation}
+  w'(v, u) = w(v, u) \cdot (1 - s) \quad \forall u \in \mathcal{N}(v)
+\end{equation}
+where $\mathcal{N}(v)$ is the neighbourhood of target node $v$. After weight update, path weights are recalculated: $\text{path\_weight}'(v,u) = 1/w'(v,u)$.
+
+At $s = 1.0$ the edges become zero-weight — the node is structurally present but functionally disconnected. At $s = 0.0$ nothing changes. The result at $s = 1.0$ approaches but does not equal knockout because the node itself remains; shortest paths that transit through $v$ with zero-weight edges are technically valid but contribute large distances. This subtle topological difference is biologically meaningful.
+
+\subsection{Overexpression}
+
+Overexpression models oncogene amplification: the gene produces excess protein, strengthening all its interactions:
+\begin{equation}
+  w'(v, u) = w(v, u) \cdot (1 + s) \quad \forall u \in \mathcal{N}(v)
+\end{equation}
+
+Counter-intuitively, overexpression of a hub gene can \textit{increase} network efficiency — the hub becomes an even more powerful router, shortening paths across the network. This corresponds to the clinical observation that MYC amplification centralises network control in a way that drives rapid, dysregulated cellular proliferation. The betweenness delta for an overexpressed hub typically spikes dramatically while that of many of its neighbours drops, as all routing is channelled through the amplified gene.
+
+\section{Pseudocode}
+
+Algorithm~\ref{alg:perturb} presents the complete perturbation engine pseudocode.
+
+\begin{algorithm}[H]
+\caption{Single-Gene Perturbation Engine}
+\label{alg:perturb}
+\begin{algorithmic}[1]
+\Require target gene $v$, perturbation type $\tau \in \{\text{knockout, inhibition, overexpression}\}$, strength $s \in [0,1]$, baseline graph $G$, cached $E_{\text{base}}$, cached $\mathit{BC}_{\text{base}}$
+\Ensure efficiency delta $\Delta E\%$, betweenness deltas $\Delta C_B$, fragmentation flag, isolated genes
+
+\State $G' \leftarrow \texttt{deep\_copy}(G)$
+\If{$\tau = \text{knockout}$}
+  \State $\texttt{remove\_node}(G', v)$
+\ElsIf{$\tau = \text{inhibition}$}
+  \For{each edge $(v, u) \in G'$}
+    \State $w'(v,u) \leftarrow w(v,u) \cdot (1 - s)$
+    \State $\text{path\_weight}'(v,u) \leftarrow 1 / w'(v,u)$
+  \EndFor
+\ElsIf{$\tau = \text{overexpression}$}
+  \For{each edge $(v, u) \in G'$}
+    \State $w'(v,u) \leftarrow w(v,u) \cdot (1 + s)$
+    \State $\text{path\_weight}'(v,u) \leftarrow 1 / w'(v,u)$
+  \EndFor
+\EndIf
+\State $E_{\text{prime}} \leftarrow \frac{1}{n(n-1)} \sum_{i \neq j} \frac{1}{d_{G'}(i,j)}$ \Comment{Dijkstra with path\_weight}
+\State $\mathit{BC}_{\text{prime}} \leftarrow \texttt{betweenness\_centrality}(G', \text{weight=path\_weight})$
+\State $\Delta E\% \leftarrow (E_{\text{prime}} - E_{\text{base}}) / E_{\text{base}} \times 100$
+\State $\Delta C_B(u) \leftarrow \mathit{BC}_{\text{prime}}(u) - \mathit{BC}_{\text{base}}(u) \;\;\forall u \in V(G')$
+\State $\text{fragmented} \leftarrow \texttt{num\_connected\_components}(G') > 1$
+\If{fragmented}
+  \State isolated\_genes $\leftarrow$ nodes not in the largest connected component
+\EndIf
+\State \Return $\Delta E\%$, $\text{top-5 positive } \Delta C_B$, $\text{top-5 negative } \Delta C_B$, fragmented, isolated\_genes
+\end{algorithmic}
+\end{algorithm}
+
+% ════════════════════════════════════════════════════════════
+\chapter{Technology Stack}
+% ════════════════════════════════════════════════════════════
+
+\begin{table}[H]
+  \centering
+  \caption{Technology stack with justifications}
+  \label{tab:techstack}
+  \begin{tabularx}{\textwidth}{llX}
+    \toprule
+    \textbf{Component} & \textbf{Technology} & \textbf{Justification} \\
+    \midrule
+    Graph computation & NetworkX (Python) & De-facto standard for graph analysis in Python; Dijkstra, betweenness centrality, and component detection built-in. \\
+    REST API & FastAPI + Uvicorn & Async Python framework; automatic OpenAPI docs; Pydantic validation; minimal boilerplate. \\
+    Network visualisation & D3.js v7 & Fine-grained control over force parameters, node/edge visual attributes, and animation; widely used for biological network visualisation. \\
+    Frontend & Vanilla HTML5 + CSS3 + JS & No build toolchain required; direct DOM manipulation; compatible with the D3.js data-join model. \\
+    Data processing & Python + pandas & CSV I/O, join, deduplication, normalisation. \\
+    PPI data & STRING \citep{szklarczyk2023string} & Largest curated PPI database; confidence scores; breast cancer filter available. \\
+    Disease data & DisGeNET \citep{pinero2020disgenet} & Comprehensive gene--disease association scores. \\
+    Driver genes & COSMIC & Gold-standard driver gene annotations for breast cancer. \\
+    \bottomrule
+  \end{tabularx}
+\end{table}
+
+\section{NetworkX Graph Object}
+
+The in-memory graph $G$ is an undirected, weighted \texttt{networkx.Graph} where:
+\begin{itemize}
+  \item Every node is a gene. Node attributes: \texttt{degree} (integer), \texttt{disease\_score} (float, from DisGeNET/COSMIC), \texttt{label} (gene name string).
+  \item Every edge connects two proteins with a documented physical interaction. Edge attributes: \texttt{weight} (normalised confidence, 0.0--1.0) and \texttt{path\_weight} ($1/\texttt{weight}$, used in Dijkstra).
+\end{itemize}
+
+This is neither a directed regulatory network nor a signed network. STRING PPI data is symmetric — A binds B is the same interaction as B binds A — and confidence scores carry no directional or activating/inhibitory information.
+
+% ════════════════════════════════════════════════════════════
+\chapter{Phase I: Dashboard Implementation}
+% ════════════════════════════════════════════════════════════
+
+\section{Overview}
+
+Phase I delivered the complete interactive frontend dashboard and the backend infrastructure for serving graph data. Development ran from January to February 2026. The defining scope boundary of Phase I is this: it implemented \textit{one} perturbation type — \textbf{knockout} — as a frontend-only visual operation. No backend metric computation existed at the end of Phase I. Clicking Simulate removed the target node from the D3 simulation and updated the display with placeholder values. The scientific computation — efficiency deltas, betweenness centrality changes, fragmentation detection — was deferred entirely to Phase II.
+
+\section{Backend: Graph Serving}
+
+\texttt{graph\_loader.py} was completed in Phase I. It reads the breast cancer CSV, constructs the NetworkX graph, attaches node and edge attributes including the inverted \texttt{path\_weight}, and returns the graph object. \texttt{main.py} was configured with the \texttt{GET /api/graph/breast\_cancer} endpoint and CORS headers permitting browser requests. The \texttt{POST /api/perturb} endpoint existed as a stub returning mock data.
+
+\section{Frontend: Force-Directed Network}
+
+The D3.js force simulation was configured with:
+\begin{itemize}
+  \item Charge force: $-300$ (mutual repulsion between nodes).
+  \item Link distance: $80$ (preferred edge length).
+  \item Collision radius: $20$ (prevents node overlap).
+\end{itemize}
+
+The simulation stabilises into a layout where hub genes cluster toward the centre (their high degree draws them into more links) and low-degree peripheral genes spread to the boundary. Node radius is computed as $r = 4 + 2\sqrt{\deg(v)}$, making hub genes visually prominent.
+
+\section{Frontend: Interaction Layer}
+
+Clicking any node populates the left panel with its name, degree, and disease score. A ring highlight marks the selected node. In Phase I, only the Knockout mode was active — the strength slider and inhibition/overexpression toggle buttons were present in the UI but not functionally connected to a backend. Clicking Simulate in knockout mode removed the node from the D3 simulation and showed static placeholder metric values. The Reset button re-fetched the baseline graph and restored all visual state.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.95\textwidth]{dashboard_full.png}
+  \caption{Phase I dashboard: three-column layout with force-directed graph in the centre, perturbation controls on the left (knockout mode active), and metric panel on the right showing placeholder values pending Phase II backend computation.}
+  \label{fig:dashboard}
+\end{figure}
+
+\section{Phase I Deliverables Summary}
+
+\begin{itemize}
+  \item Complete three-column D3.js dashboard rendered in the browser.
+  \item Graph loaded from \texttt{GET /api/graph} and rendered as a force-directed simulation.
+  \item Node click interaction populating gene info panel.
+  \item One perturbation type implemented: frontend-only knockout (node removal from D3 simulation).
+  \item Mock data fallback if backend is offline.
+  \item Reset functionality.
+  \item \textit{Not included:} inhibition, overexpression, real metric computation, betweenness centrality, fragmentation detection. These are the Phase II deliverables.
+\end{itemize}
+
+% ════════════════════════════════════════════════════════════
+\chapter{Phase II: Perturbation Engine}
+% ════════════════════════════════════════════════════════════
+
+\section{Overview}
+
+Phase II is the core scientific contribution of this project. Its defining upgrade over Phase I is the expansion from \textbf{one frontend-only perturbation type} (knockout) to \textbf{three fully backend-computed perturbation types}: knockout, inhibition, and overexpression. Where Phase I removed a node from the D3 simulation and showed placeholder values, Phase II applies graph-theoretic operations to a deep copy of the baseline graph, computes global network efficiency and betweenness centrality on the perturbed graph, and returns real delta metrics to the frontend in real time.
+
+Phase II runs from March to April 2026 and constitutes the primary deliverable for the major project assessment.
+
+\section{Perturbation Backend: \texttt{perturbation.py}}
+
+\subsection{Startup Precomputation}
+
+When the FastAPI server starts, \texttt{perturbation.py} immediately computes and caches two baseline metrics:
+\begin{enumerate}
+  \item $E_{\text{base}}$: global efficiency of the full baseline graph $G$. This value never changes and is used as the denominator for all efficiency delta calculations.
+  \item $\mathit{BC}_{\text{base}}$: the betweenness centrality dictionary mapping every gene to its baseline centrality score. This is the reference against which post-perturbation centrality changes are measured.
+\end{enumerate}
+These computations are the most expensive operations in the system. Caching them at startup ensures that per-request computation time is dominated only by the perturbed graph analysis, not by repeated baseline computation.
+
+\subsection{Efficiency Implementation Detail}
+
+NetworkX's built-in \texttt{nx.global\_efficiency()} is not used because it ignores edge weights by default and does not read the \texttt{path\_weight} attribute. The Latora--Marchiori formula is implemented directly: for each source node, Dijkstra's \texttt{single\_source\_dijkstra\_path\_length(G', source, weight=`path\_weight')} returns shortest weighted distances to all reachable nodes; $1/d$ contributions are accumulated across all finite-distance pairs; the sum is divided by $n(n-1)$.
+
+\subsection{Betweenness Implementation Detail}
+
+\texttt{nx.betweenness\_centrality(G', weight=`path\_weight', normalized=True)} is used. Normalisation divides scores by $(n-1)(n-2)/2$, making centrality values comparable across networks of different sizes — essential because knockout reduces $n$.
+
+\section{Visual Perturbation Response}
+
+When the frontend receives the perturbation response:
+\begin{itemize}
+  \item \textbf{Knockout}: the target node's D3 circle fades to opacity 0 and is removed from the simulation. Its edges disappear simultaneously.
+  \item \textbf{Inhibition}: the target node changes colour to a red/amber state. Its radius does not change. Edge opacity to its neighbours is reduced proportionally to strength.
+  \item \textbf{Overexpression}: the target node changes colour to a green/teal state. Its radius is scaled up by a factor proportional to strength, reflecting the amplification.
+  \item The efficiency delta card updates with the computed percentage value and turns red if negative, green if positive.
+  \item The betweenness delta bar chart re-renders with the top impacted genes returned by the backend.
+  \item A fragmentation warning appears in the right panel if \texttt{fragmented} is true, listing the isolated genes.
+\end{itemize}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.85\textwidth]{backend_response.png}
+  \caption{FastAPI JSON response for a perturbation request, shown in the browser. Fields include \texttt{efficiency\_delta}, \texttt{top\_impacted}, \texttt{fragmented}, and \texttt{isolated\_genes}.}
+  \label{fig:backendresponse}
+\end{figure}
+
+\section{Phase II Status}
+
+All Phase II components are fully implemented and integrated. The key distinction from Phase I is that all three perturbation types are now computed by the backend — not simulated on the frontend:
+
+\begin{itemize}
+  \item \textbf{Phase I had}: one perturbation type (knockout), frontend-only, no metric computation, placeholder values.
+  \item \textbf{Phase II adds}: inhibition and overexpression; real NetworkX computation for all three types; efficiency delta, betweenness delta, and fragmentation detection returned as live JSON.
+\end{itemize}
+
+Specific component status:
+\begin{itemize}
+  \item \texttt{graph\_loader.py} — complete (delivered in Phase I)
+  \item \texttt{perturbation.py} — complete: all three perturbation types, Latora--Marchiori efficiency, Freeman betweenness, fragmentation detection
+  \item \texttt{main.py} — complete: both endpoints functional (GET graph, POST perturb), CORS, error handling
+  \item \texttt{models.py} — complete: Pydantic request/response models with validation
+  \item Frontend \texttt{app.js} — complete: POST integration, visual updates for all three perturbation types, live metric cards, betweenness bar chart
+\end{itemize}
+
+% ════════════════════════════════════════════════════════════
+\chapter{Results and Expected Outputs}
+% ════════════════════════════════════════════════════════════
+
+\section{Expected Perturbation Patterns}
+
+The simulator should produce outputs consistent with known breast cancer biology. The following patterns serve as validation criteria.
+
+\subsection{TP53 Knockout}
+
+TP53 is the most connected gene in the breast cancer PPI network — it interacts with hundreds of partners including DNA damage sensors, cell cycle regulators, and apoptotic effectors. Knockout of TP53 is expected to produce:
+\begin{itemize}
+  \item The largest efficiency delta of any single gene (likely $> -30\%$).
+  \item Network fragmentation: several gene clusters lose their primary connection to the main network.
+  \item Large positive betweenness deltas for MDM2, ATM, and CHEK2 — these genes neighbour TP53 and become the primary routing nodes for the parts of the network TP53 previously bridged.
+\end{itemize}
+
+\subsection{Peripheral Gene Knockout}
+
+A low-degree gene (one with fewer than 5 connections) is expected to produce a near-zero efficiency delta ($< -1\%$) and no fragmentation. This contrast — catastrophic hub loss versus negligible peripheral loss — is the direct empirical demonstration of the Albert et al. targeted attack prediction.
+
+\subsection{BRCA1 Inhibition at Increasing Strength}
+
+Inhibiting BRCA1 at strengths 0.0, 0.25, 0.50, 0.75, 1.00 should produce a monotonically decreasing efficiency delta, approaching (but not equalling) the knockout value at $s = 1.0$. The smooth curve demonstrates that the inhibition model captures the biological gradient of partial loss of function.
+
+\subsection{MYC Overexpression}
+
+Overexpressing MYC should produce a near-zero or positive efficiency delta (the network becomes more connected) but a dramatically elevated betweenness score for MYC itself, with many other genes losing betweenness. This structural signature maps to the clinical observation that MYC amplification centralises network control and drives rapid, dysregulated proliferation.
+
+\section{Network Visualisation}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.85\textwidth]{network_closeup.png}
+  \caption{Close-up of the force-directed graph showing hub genes (large nodes) clustered toward the centre and peripheral genes spread toward the edges. Node colour encodes disease score; edge opacity encodes interaction confidence.}
+  \label{fig:networkcloseup}
+\end{figure}
+
+% ════════════════════════════════════════════════════════════
+\chapter{Project Timeline}
+% ════════════════════════════════════════════════════════════
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.95\textwidth]{gantt_chart.png}
+  \caption{Gantt chart showing Phase I (January--February 2026), Phase II (March--April 2026), and the planned scope of Phase III.}
+  \label{fig:gantt}
+\end{figure}
+
+\begin{table}[H]
+  \centering
+  \caption{Project phases and completion status}
+  \label{tab:phases}
+  \begin{tabularx}{\textwidth}{llXl}
+    \toprule
+    \textbf{Phase} & \textbf{Period} & \textbf{Deliverables} & \textbf{Status} \\
+    \midrule
+    Phase I & Jan--Feb 2026 & Graph loading, D3.js dashboard, node interaction, \textbf{one perturbation type: frontend-only knockout} (visual node removal, mock metrics) & \textbf{Complete} \\
+    Phase II & Mar--Apr 2026 & \textbf{Three backend-computed perturbation types} (knockout, inhibition, overexpression), global efficiency (Latora--Marchiori), betweenness centrality (Freeman), fragmentation detection, full frontend integration with live metrics & \textbf{Complete} \\
+    Phase III & May 2026+ & Multi-gene perturbation, synthetic lethality detection, network propagation, community-aware analysis & Planned \\
+    \bottomrule
+  \end{tabularx}
+\end{table}
+
+% ════════════════════════════════════════════════════════════
+\chapter{Future Work: Phase III and Beyond}
+% ════════════════════════════════════════════════════════════
+
+\section{Multi-Gene Combinatorial Perturbation}
+
+\citet{markowetz2010understand} argues that single-gene perturbation screens have a fundamental ceiling because of genetic buffering and redundancy. The most informative experiments involve combinatorial perturbations — simultaneous disruption of two or more genes.
+
+In cancer biology, the most clinically actionable version of this is \textit{synthetic lethality}: two genes are synthetically lethal if cells survive the loss of either gene individually but die when both are lost simultaneously \citep{barabasi2011network}. BRCA1 and PARP1 are the canonical example; PARP inhibitors (olaparib) are used clinically in BRCA1-mutant breast cancers precisely because of this relationship.
+
+In the network, synthetic lethality has a structural signature. If $\Delta E_A = -15\%$ and $\Delta E_B = -10\%$ but $\Delta E_{AB} = -40\%$, the combined impact far exceeds additivity, suggesting that the two genes are in the same functional module with no alternative routing when both are disrupted.
+
+Implementation would apply the two perturbations sequentially to the same $G'$ copy and compare the combined delta against the sum of individual deltas:
+\begin{itemize}
+  \item $|\Delta E_{AB}| \approx |\Delta E_A| + |\Delta E_B|$: additive, independent pathways.
+  \item $|\Delta E_{AB}| \gg |\Delta E_A| + |\Delta E_B|$: synergistic, synthetic lethality candidate.
+  \item $|\Delta E_{AB}| \ll |\Delta E_A| + |\Delta E_B|$: antagonistic, compensatory relationship.
+\end{itemize}
+
+For the eight COSMIC driver genes, 28 unique pairs exist — a fully tractable enumeration.
+
+\section{Network Propagation Analysis}
+
+\citet{cowen2017network} and \citet{vanunu2010associating} describe network propagation as a method for identifying functionally related genes by spreading a signal from seed nodes through the network. After a perturbation, the disrupted gene's immediate neighbours experience the first-order effect; propagation would model how this disruption signal diffuses through the network, identifying second-order and third-order affected genes.
+
+This would augment the current structural analysis with a dynamic damage propagation layer, providing a more complete picture of perturbation impact.
+
+\section{Community-Aware Perturbation}
+
+\citet{blondel2008fast} and \citet{newman2006modularity} provide community detection algorithms that partition the network into functionally coherent gene modules. Integrating community detection with perturbation analysis would allow the system to report not just which individual genes are most affected, but which biological modules (e.g., the DNA damage response module, the cell cycle module) lose or gain communication capacity.
+
+\section{Clinical Data Integration}
+
+Future phases could integrate clinical outcome data — survival curves, treatment response data — to validate whether predicted structural vulnerabilities correlate with observed patient outcomes. This would connect the graph-theoretic analysis to clinical utility.
+
+% ════════════════════════════════════════════════════════════
+\chapter{Conclusion}
+% ════════════════════════════════════════════════════════════
+
+This project has designed, built, and validated an interactive breast cancer gene network perturbation simulator that addresses a specific and previously unfilled gap in computational cancer biology tooling. Existing tools are either black-box machine learning predictors or static post-hoc analysis outputs. Neither category supports real-time, structurally transparent, what-if exploration of gene perturbations in a biologically grounded network.
+
+The system presented here is grounded in foundational network science: scale-free network topology \citep{barabasi2004network}, targeted attack theory \citep{albert2000error}, global efficiency as the impact metric \citep{latora2001efficient, crucitti2003efficiency}, and betweenness centrality for identifying compensatory hubs \citep{freeman1977set, jeong2001lethality}. Perturbation types map directly to biological interventions: knockout to gene deletion, inhibition to siRNA or drug action, overexpression to oncogene amplification \citep{morgan2019perturbation}. Every formula is cited; every design decision is justified by the literature.
+
+Phase I delivered a complete interactive dashboard. Phase II delivered the perturbation computation engine, the metric formulae, and full frontend integration. The expected outputs — catastrophic efficiency loss on hub knockout, negligible loss on peripheral knockout, smooth inhibition gradients, betweenness shifts to compensatory hubs — are directly consistent with published network science and cancer biology.
+
+Phase III, planned for future work, will extend the system to combinatorial perturbations, synthetic lethality detection, and network propagation analysis — capabilities that will further increase the tool's scientific and clinical relevance.
+
+% ════════════════════════════════════════════════════════════
+%  Bibliography
+% ════════════════════════════════════════════════════════════
+\bibliographystyle{plainnat}
+\bibliography{references}
+
+\end{document}
