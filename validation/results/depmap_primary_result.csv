@@ -1,0 +1,2 @@
+N,spearman_rho,asymptotic_p,bootstrap_ci_lower,bootstrap_ci_upper,bootstrap_B,bootstrap_valid_replicates,bootstrap_seed,permutation_p,permutation_B,permutation_seed,degree_matched_permutation_p,degree_matched_permutation_B,degree_matched_permutation_seed
+849,0.005331610368787381,0.8767246841051257,-0.06402144287179597,0.07464288035503301,10000,10000,20260929,0.8729127087291271,10000,20260930,0.9642035796420358,10000,20260931

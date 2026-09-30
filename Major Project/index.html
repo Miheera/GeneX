@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cancer Gene Network Explorer | Research Dashboard</title>
+    <meta name="description" content="Interactive breast cancer PPI network explorer with perturbation analysis, attack tolerance simulation, and druggability assessment.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -16,6 +17,14 @@
             <svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.42 4.58a5.4 5.4 0 0 0-7.65 0l-.77.78-.77-.78a5.4 5.4 0 0 0-7.65 0C1.46 6.7 1.33 10.28 4 13l8 8 8-8c2.67-2.72 2.54-6.3.42-8.42z"></path></svg>
             <h1>Cancer Gene Network Explorer</h1>
         </div>
+        <nav class="main-tabs" role="tablist" aria-label="Dashboard sections">
+            <button id="tab-network"    class="tab-btn active"  role="tab" aria-selected="true"  aria-controls="view-network">Network</button>
+            <button id="tab-tolerance" class="tab-btn"          role="tab" aria-selected="false" aria-controls="view-tolerance">Attack Tolerance</button>
+            <button id="tab-druggable" class="tab-btn"          role="tab" aria-selected="false" aria-controls="view-druggable">Druggability</button>
+            <button id="tab-threshold" class="tab-btn"          role="tab" aria-selected="false" aria-controls="view-threshold">Threshold Sensitivity</button>
+            <button id="tab-cosmic"    class="tab-btn"          role="tab" aria-selected="false" aria-controls="view-cosmic">COSMIC Benchmark</button>
+            <button id="tab-expression" class="tab-btn"         role="tab" aria-selected="false" aria-controls="view-expression">Expression vs. Structure</button>
+        </nav>
         <div class="header-controls">
             <label for="cancer-type">Cancer Type:</label>
             <select id="cancer-type" class="custom-select">
@@ -27,105 +36,387 @@
         </div>
     </header>
 
-    <main class="dashboard-layout">
-        <!-- Left Panel: Control Panel -->
-        <aside class="panel left-panel">
-            <section class="panel-section">
-                <h2 class="section-title">Selected Gene Info</h2>
-                <div class="info-card">
-                    <div class="info-row">
-                        <span class="label">Gene Name:</span>
-                        <span id="gene-name" class="value">None</span>
-                    </div>
-                    <div class="info-row">
-                        <span class="label">Degree:</span>
-                        <span id="gene-degree" class="value">—</span>
-                    </div>
-                    <div class="info-row">
-                        <span class="label">Disease Score:</span>
-                        <span id="gene-score" class="value">—</span>
-                    </div>
-                </div>
-            </section>
+    <main class="dashboard-main">
 
-            <section class="panel-section">
-                <h2 class="section-title">Perturbation Control</h2>
-                <div id="slider-group" class="control-group">
-                    <div class="slider-header">
-                        <label for="strength-slider">Perturbation Strength</label>
-                        <span id="slider-value">50%</span>
-                    </div>
-                    <input type="range" id="strength-slider" min="0" max="100" value="50" class="styled-slider">
-                </div>
+        <!-- ═══════════════════════════════════════════════════════════ -->
+        <!-- VIEW 1: Network / Perturbation (existing)                  -->
+        <!-- ═══════════════════════════════════════════════════════════ -->
+        <div id="view-network" class="view-pane active">
+            <div class="dashboard-layout">
+                <!-- Left Panel: Control Panel -->
+                <aside class="panel left-panel">
+                    <section class="panel-section">
+                        <h2 class="section-title">Selected Gene Info</h2>
+                        <div class="info-card">
+                            <div class="info-row">
+                                <span class="label">Gene Name:</span>
+                                <span id="gene-name" class="value">None</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="label">Degree:</span>
+                                <span id="gene-degree" class="value">—</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="label">Disease Score:</span>
+                                <span id="gene-score" class="value">—</span>
+                            </div>
+                        </div>
+                    </section>
 
-                <!-- Perturbation Type Toggle -->
-                <div class="control-group">
-                    <div class="perturb-toggle">
-                        <button class="perturb-btn" data-type="knockout">Knockout</button>
-                        <button class="perturb-btn active" data-type="inhibition">Inhibition</button>
-                        <button class="perturb-btn" data-type="overexpression">Overexpression</button>
-                    </div>
-                </div>
+                    <section class="panel-section">
+                        <h2 class="section-title">Perturbation Control</h2>
+                        <div id="slider-group" class="control-group">
+                            <div class="slider-header">
+                                <label for="strength-slider">Perturbation Strength</label>
+                                <span id="slider-value">50%</span>
+                            </div>
+                            <input type="range" id="strength-slider" min="0" max="100" value="50" class="styled-slider">
+                        </div>
 
-                <div class="button-group">
-                    <button id="btn-simulate" class="btn btn-primary">Simulate Perturbation</button>
-                    <button id="btn-reset" class="btn btn-outline">Reset Network</button>
-                </div>
-            </section>
-        </aside>
+                        <div class="control-group">
+                            <div class="perturb-toggle">
+                                <button class="perturb-btn" data-type="knockout">Knockout</button>
+                                <button class="perturb-btn active" data-type="inhibition">Inhibition</button>
+                                <button class="perturb-btn" data-type="overexpression">Overexpression</button>
+                            </div>
+                        </div>
 
-        <!-- Center Panel: Visualization Area -->
-        <section class="panel center-panel">
-            <div id="network-container">
-                <div class="viz-header">
-                    <span class="viz-title">Gene Interaction Network</span>
-                    <div class="viz-legend">
-                        <span class="legend-item"><span class="node-dot blue"></span> Normal</span>
-                        <span class="legend-item"><span class="node-dot red"></span> Perturbed</span>
+                        <div class="button-group">
+                            <button id="btn-simulate" class="btn btn-primary">Simulate Perturbation</button>
+                            <button id="btn-reset" class="btn btn-outline">Reset Network</button>
+                        </div>
+                    </section>
+                </aside>
+
+                <!-- Center Panel: Visualization Area -->
+                <section class="panel center-panel">
+                    <div id="network-container">
+                        <div class="viz-header">
+                            <span class="viz-title">Gene Interaction Network</span>
+                            <div class="viz-legend">
+                                <span class="legend-item"><span class="node-dot blue"></span> Normal</span>
+                                <span class="legend-item"><span class="node-dot red"></span> Perturbed</span>
+                            </div>
+                        </div>
+                        <!-- SVG injected by D3 -->
+                        <svg id="network-svg"></svg>
                     </div>
-                </div>
-                <!-- SVG injected by D3 -->
-                <svg id="network-svg"></svg>
+                </section>
+
+                <!-- Right Panel: Metrics Panel -->
+                <aside class="panel right-panel">
+                    <section class="panel-section">
+                        <h2 id="perturbation-results-title" class="section-title">Perturbation Results</h2>
+                        <p id="perturbation-results-note" class="analysis-subtitle">Run a perturbation to view structural or propagation results.</p>
+                        <div class="metrics-grid">
+                            <div class="metric-card">
+                                <span id="metric-baseline-label" class="metric-label">Baseline Efficiency</span>
+                                <span id="metric-baseline" class="metric-value">0.842</span>
+                            </div>
+                            <div class="metric-card">
+                                <span id="metric-current-label" class="metric-label">Current Efficiency</span>
+                                <span id="metric-current" class="metric-value">0.842</span>
+                            </div>
+                            <div class="metric-card">
+                                <span id="metric-change-label" class="metric-label">Percentage Change</span>
+                                <span id="metric-change" class="metric-value highlight">0.00%</span>
+                            </div>
+                            <div class="metric-card info-box">
+                                <span id="metric-impact-label" class="metric-label">Impact Score</span>
+                                <span id="metric-impact" class="metric-value">0</span>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="panel-section">
+                        <h2 id="impact-chart-title" class="section-title">Top Impacted Genes</h2>
+                        <div id="impact-chart-container">
+                            <p class="chart-placeholder">No perturbation results yet.</p>
+                        </div>
+                    </section>
+                </aside>
             </div>
-        </section>
+        </div>
 
-        <!-- Right Panel: Metrics Panel -->
-        <aside class="panel right-panel">
-            <section class="panel-section">
-                <h2 class="section-title">System Metrics</h2>
-                <div class="metrics-grid">
-                    <div class="metric-card">
-                        <span class="metric-label">Baseline Efficiency</span>
-                        <span id="metric-baseline" class="metric-value">0.842</span>
-                    </div>
-                    <div class="metric-card">
-                        <span class="metric-label">Current Efficiency</span>
-                        <span id="metric-current" class="metric-value">0.842</span>
-                    </div>
-                    <div class="metric-card">
-                        <span class="metric-label">Percentage Change</span>
-                        <span id="metric-change" class="metric-value highlight">0.00%</span>
-                    </div>
-                    <div class="metric-card info-box">
-                        <span class="metric-label">Impact Score</span>
-                        <span id="metric-impact" class="metric-value">0</span>
-                    </div>
-                </div>
-            </section>
+        <!-- ═══════════════════════════════════════════════════════════ -->
+        <!-- VIEW 2: Attack Tolerance                                   -->
+        <!-- ═══════════════════════════════════════════════════════════ -->
+        <div id="view-tolerance" class="view-pane" aria-hidden="true">
+            <div class="analysis-layout">
+                <!-- Controls sidebar -->
+                <aside class="analysis-sidebar panel">
+                    <section class="panel-section">
+                        <h2 class="section-title">Removal Strategy</h2>
+                        <div class="perturb-toggle strategy-toggle" id="strategy-toggle">
+                            <button class="perturb-btn active" data-strategy="degree"      id="strat-degree">Degree</button>
+                            <button class="perturb-btn"        data-strategy="betweenness" id="strat-betweenness">Betweenness</button>
+                            <button class="perturb-btn"        data-strategy="random"      id="strat-random">Random</button>
+                        </div>
+                    </section>
 
-            <section class="panel-section">
-                <h2 class="section-title">Top Impacted Genes</h2>
-                <div id="impact-chart-container">
-                    <!-- Chart injected by script -->
-                    <div class="chart-placeholder">
-                        <div class="bar-row"><span>BRCA1</span> <div class="bar" style="width: 80%"></div></div>
-                        <div class="bar-row"><span>TP53</span> <div class="bar" style="width: 65%"></div></div>
-                        <div class="bar-row"><span>EGFR</span> <div class="bar" style="width: 50%"></div></div>
-                        <div class="bar-row"><span>MYC</span> <div class="bar" style="width: 40%"></div></div>
+                    <section class="panel-section">
+                        <h2 class="section-title">Y-Axis Metric</h2>
+                        <div class="perturb-toggle" id="metric-toggle">
+                            <button class="perturb-btn active" data-metric="efficiency"   id="metric-eff">Efficiency</button>
+                            <button class="perturb-btn"        data-metric="lcc_fraction" id="metric-lcc">LCC Fraction</button>
+                        </div>
+                    </section>
+
+                    <section class="panel-section">
+                        <h2 class="section-title">About This Chart</h2>
+                        <div class="info-card tol-caption">
+                            <p>Measures how network <strong>global efficiency</strong> and <strong>largest connected component (LCC)</strong> degrade as nodes are progressively removed.</p>
+                            <p style="margin-top:10px;">Targeted removal (degree/betweenness) degrades the network faster than random removal in <strong>scale-free networks</strong> — a hallmark of biological PPI networks.</p>
+                            <p style="margin-top:10px;">The <strong>shaded band</strong> (random strategy only) shows mean ± 1 std across simulation runs.</p>
+                        </div>
+                    </section>
+                </aside>
+
+                <!-- Chart area -->
+                <section class="panel analysis-main">
+                    <div class="viz-header-bar">
+                        <div>
+                            <span class="analysis-title" id="tol-chart-title">Attack Tolerance — Degree Removal</span>
+                            <span class="analysis-subtitle" id="tol-chart-subtitle">Global efficiency vs. fraction of nodes removed</span>
+                        </div>
+                        <div id="tol-legend" class="chart-legend"></div>
                     </div>
-                </div>
-            </section>
-        </aside>
+                    <div id="tol-loading" class="loading-state" style="display:none;">
+                        <div class="spinner"></div><span>Loading…</span>
+                    </div>
+                    <div id="tol-error" class="error-banner" style="display:none;"></div>
+                    <div id="tol-chart" class="chart-area"></div>
+                </section>
+            </div>
+        </div>
+
+        <!-- ═══════════════════════════════════════════════════════════ -->
+        <!-- VIEW 3: Druggability / Open Targets                        -->
+        <!-- ═══════════════════════════════════════════════════════════ -->
+        <div id="view-druggable" class="view-pane" aria-hidden="true">
+            <div class="analysis-layout">
+                <!-- Controls sidebar -->
+                <aside class="analysis-sidebar panel">
+                    <section class="panel-section">
+                        <h2 class="section-title">Analysis Settings</h2>
+                        <div class="control-group">
+                            <div class="slider-header">
+                                <label for="topn-slider">Top N Genes</label>
+                                <span id="topn-value">20</span>
+                            </div>
+                            <input type="range" id="topn-slider" min="5" max="34" value="20" step="1" class="styled-slider">
+                        </div>
+                        <button id="btn-load-druggable" class="btn btn-primary" style="width:100%;">Load Analysis</button>
+                    </section>
+
+                    <section class="panel-section">
+                        <h2 class="section-title">Data Source</h2>
+                        <div class="info-card tol-caption">
+                            <p>Drug interaction data sourced from <strong>DGIdb</strong> (Drug-Gene Interaction database).</p>
+                            <p style="margin-top:10px;">Gene ranking uses the network's structural impact score (knockout efficiency drop).</p>
+                        </div>
+                    </section>
+                </aside>
+
+                <!-- Main content -->
+                <section class="panel analysis-main drug-main">
+                    <div id="drug-loading" class="loading-state" style="display:none;">
+                        <div class="spinner"></div><span>Loading druggability data…</span>
+                    </div>
+                    <div id="drug-error" class="error-banner" style="display:none;"></div>
+
+                    <!-- Methodology note banner -->
+                    <div id="drug-methodology-note" class="methodology-banner" style="display:none;"></div>
+
+                    <!-- Sub-tabs -->
+                    <div id="drug-content" style="display:none;">
+                        <div class="drug-subtabs">
+                            <button class="drug-subtab active" id="subtab-druggable" data-target="drug-table-druggable">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                                Genes with Known Drug Interactions
+                                <span class="subtab-count" id="count-druggable">—</span>
+                            </button>
+                            <button class="drug-subtab" id="subtab-open" data-target="drug-table-open">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4m0 4h.01"/></svg>
+                                High-Impact Genes Without Known Drug Interactions
+                                <span class="subtab-count" id="count-open">—</span>
+                            </button>
+                        </div>
+
+                        <div id="drug-table-druggable" class="drug-table-panel">
+                            <div id="druggable-table-body"></div>
+                        </div>
+                        <div id="drug-table-open" class="drug-table-panel" style="display:none;">
+                            <div class="open-targets-notice">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4m0 4h.01"/></svg>
+                                These genes rank highly by network impact but were <strong>not found in the imported DGIdb dataset</strong>.
+                                This does <strong>not</strong> mean they are undruggable — they may have drug interactions not yet captured in DGIdb, or may be strong candidates for novel therapeutic targeting.
+                            </div>
+                            <div id="open-table-body"></div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+
+        <!-- ═══════════════════════════════════════════════════════════ -->
+        <!-- VIEW 4: Threshold Sensitivity                              -->
+        <!-- ═══════════════════════════════════════════════════════════ -->
+        <div id="view-threshold" class="view-pane" aria-hidden="true">
+            <div class="analysis-layout">
+                <aside class="analysis-sidebar panel">
+                    <section class="panel-section">
+                        <h2 class="section-title">Y-Axis Metric</h2>
+                        <div class="perturb-toggle" id="thresh-metric-toggle">
+                            <button class="perturb-btn active" data-tmetric="edge_count">Edges</button>
+                            <button class="perturb-btn"        data-tmetric="node_count">Nodes</button>
+                            <button class="perturb-btn"        data-tmetric="density">Density</button>
+                            <button class="perturb-btn"        data-tmetric="mean_degree">Degree</button>
+                        </div>
+                    </section>
+                    <section class="panel-section">
+                        <h2 class="section-title">About</h2>
+                        <div class="info-card tol-caption">
+                            <p>Shows how network structure changes as the STRING confidence threshold rises. Higher thresholds retain only the most confident interactions, producing sparser but more reliable graphs.</p>
+                            <p style="margin-top:10px;">The <strong>Jaccard chart</strong> shows how similar each threshold's gene set is to the <em>shipping threshold</em> (t=700). A Jaccard of 1.0 means identical edges.</p>
+                            <p style="margin-top:10px;">The <strong>status table</strong> flags any threshold that produced a degraded or empty graph.</p>
+                        </div>
+                    </section>
+                </aside>
+
+                <section class="panel analysis-main">
+                    <div class="viz-header-bar">
+                        <div>
+                            <span class="analysis-title">Threshold Sensitivity Analysis</span>
+                            <span class="analysis-subtitle">STRING confidence threshold vs. network topology metrics</span>
+                        </div>
+                    </div>
+                    <div id="thresh-loading" class="loading-state" style="display:none;"><div class="spinner"></div><span>Loading…</span></div>
+                    <div id="thresh-error" class="error-banner" style="display:none;"></div>
+                    <div id="thresh-content" style="display:none;">
+                        <div id="thresh-main-chart" class="chart-area" style="min-height:240px;"></div>
+                        <div class="thresh-two-col">
+                            <div>
+                                <p class="chart-section-label">Jaccard similarity vs. shipping threshold (t=700)</p>
+                                <div id="thresh-jaccard-chart" class="chart-area" style="min-height:180px;"></div>
+                            </div>
+                            <div>
+                                <p class="chart-section-label">Threshold status summary</p>
+                                <div id="thresh-status-table"></div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+
+        <!-- ═══════════════════════════════════════════════════════════ -->
+        <!-- VIEW 5: COSMIC Benchmark                                   -->
+        <!-- ═══════════════════════════════════════════════════════════ -->
+        <div id="view-cosmic" class="view-pane" aria-hidden="true">
+            <div class="analysis-layout">
+                <aside class="analysis-sidebar panel">
+                    <section class="panel-section">
+                        <h2 class="section-title">Metric</h2>
+                        <div class="perturb-toggle" id="cosmic-metric-toggle">
+                            <button class="perturb-btn active" data-cmetric="f1">F1 Score</button>
+                            <button class="perturb-btn"        data-cmetric="precision">Precision</button>
+                            <button class="perturb-btn"        data-cmetric="recall">Recall</button>
+                        </div>
+                    </section>
+                    <section class="panel-section">
+                        <h2 class="section-title">About</h2>
+                        <div class="info-card tol-caption">
+                            <p>Benchmarks how well each ranking method (betweenness, degree, impact score) recovers known COSMIC breast cancer driver genes in the network's top-N ranked genes.</p>
+                            <p style="margin-top:10px;">Higher precision means fewer false positives; higher recall means more drivers are captured. F1 is the harmonic mean.</p>
+                        </div>
+                    </section>
+                </aside>
+
+                <section class="panel analysis-main">
+                    <div id="cosmic-loading" class="loading-state" style="display:none;"><div class="spinner"></div><span>Loading…</span></div>
+                    <div id="cosmic-error" class="error-banner" style="display:none;"></div>
+                    <div id="cosmic-content" style="display:none;">
+                        <!-- Methodology note -->
+                        <div id="cosmic-methodology-note" class="methodology-banner"></div>
+                        <!-- Convergence note -->
+                        <div class="cosmic-convergence-note">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4m0 4h.01"/></svg>
+                            On this network's current size, the three ranking methods converge because COSMIC-annotated genes cluster among the highest-degree hubs regardless of ranking method. Scores will diverge on a larger or less hub-dominated graph.
+                        </div>
+                        <!-- Positive gene counts -->
+                        <div id="cosmic-positives-bar" class="cosmic-positives-bar"></div>
+                        <!-- Grouped bar chart -->
+                        <div class="viz-header-bar" style="margin-top:16px;">
+                            <div>
+                                <span class="analysis-title" id="cosmic-chart-title">COSMIC Benchmark — F1 Score</span>
+                                <span class="analysis-subtitle">Grouped by top-N cutoff, coloured by ranking method</span>
+                            </div>
+                            <div id="cosmic-legend" class="chart-legend"></div>
+                        </div>
+                        <div id="cosmic-chart" class="chart-area" style="min-height:300px;"></div>
+                    </div>
+                </section>
+            </div>
+        </div>
+
+        <!-- ═══════════════════════════════════════════════════════════ -->
+        <!-- VIEW 6: Structural Importance vs. TCGA Expression          -->
+        <!-- ═══════════════════════════════════════════════════════════ -->
+        <div id="view-expression" class="view-pane" aria-hidden="true">
+            <div class="analysis-layout">
+                <aside class="analysis-sidebar panel">
+                    <section class="panel-section">
+                        <h2 class="section-title">Comparison</h2>
+                        <div class="info-card tol-caption">
+                            <p><strong>Structural importance</strong> is the absolute global-efficiency change after a gene knockout.</p>
+                            <p style="margin-top:10px;"><strong>Tumor expression</strong> is median RNA-seq expression across the TCGA BRCA PanCancer Atlas cohort.</p>
+                            <p style="margin-top:10px;">The x-axis uses median expression z-score, which measures expression relative to the study's reference population.</p>
+                        </div>
+                    </section>
+                    <section class="panel-section">
+                        <h2 class="section-title">Interpretation</h2>
+                        <div class="info-card tol-caption">
+                            <p>Spearman rho tests whether genes with higher expression tend to have higher structural impact. It describes association only; it does not establish causation.</p>
+                        </div>
+                    </section>
+                </aside>
+
+                <section class="panel analysis-main">
+                    <div id="expression-loading" class="loading-state" style="display:none;"><div class="spinner"></div><span>Calculating structural-expression correlation…</span></div>
+                    <div id="expression-error" class="error-banner" style="display:none;"></div>
+                    <div id="expression-content" style="display:none;">
+                        <div id="expression-methodology-note" class="methodology-banner"></div>
+                        <div class="expression-summary">
+                            <div class="expression-stat">
+                                <span class="expression-stat-value" id="expression-rho">—</span>
+                                <span class="expression-stat-label">Spearman rho</span>
+                            </div>
+                            <div class="cosmic-divider"></div>
+                            <div class="expression-stat">
+                                <span class="expression-stat-value" id="expression-pvalue">—</span>
+                                <span class="expression-stat-label">P-value</span>
+                            </div>
+                            <div class="cosmic-divider"></div>
+                            <div class="expression-stat">
+                                <span class="expression-stat-value" id="expression-gene-count">—</span>
+                                <span class="expression-stat-label">Genes compared</span>
+                            </div>
+                            <p id="expression-interpretation" class="expression-interpretation"></p>
+                            <p id="expression-raw-correlation" class="expression-interpretation"></p>
+                        </div>
+                        <div class="viz-header-bar" style="margin-top:16px;">
+                            <div>
+                                <span class="analysis-title">Structural Importance vs. Real Tumor Expression</span>
+                                <span class="analysis-subtitle">Each point is one gene in the current breast-cancer network</span>
+                            </div>
+                        </div>
+                        <div id="expression-scatter" class="chart-area" style="min-height:380px;"></div>
+                    </div>
+                </section>
+            </div>
+        </div>
+
     </main>
 
     <script src="app.js"></script>

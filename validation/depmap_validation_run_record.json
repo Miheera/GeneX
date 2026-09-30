@@ -1,0 +1,77 @@
+{
+  "recorded_utc": "2026-09-28T22:35:00.868393+00:00",
+  "analysis_script": "D:\\GenX\\validation\\run_depmap_knockout_validation.py",
+  "analysis_script_sha256": "6f0de7530cd9e960be5ce3d642cb9fdd3632d32e1ec3d961632ae50710570065",
+  "frozen_manifest": "D:\\GenX\\validation\\depmap_validation_analysis_manifest.json",
+  "frozen_manifest_sha256": "846e01bf36a0db878314d9f84bc7e3b1cc12d3b73a8ef0eb8a3a688fcf3ef81f",
+  "versions": {
+    "python": "3.13.5",
+    "networkx": "3.4.2",
+    "numpy": "2.2.6",
+    "scipy": "1.14.1",
+    "matplotlib": "3.10.0"
+  },
+  "raw_and_graph_input_hashes_from_frozen_manifest": {
+    "Model.csv": "ea4e0b2a3bc806f81df62689a5ae75f1a100135727a3d7b8a4c7ccc8815183f8",
+    "CRISPRGeneEffect.csv": "e610a4cefb13a82b5b256b47eb08b63ff14843f8dbd0fb164bc0a32688e5b89e",
+    "Major Project\\backend\\data\\processed\\expanded_nodes_t900.csv": "6cd3ce98705a2ecbab4a8bdda6e3d0e330b2eae14756e90d6cd2df64e91adfc2",
+    "Major Project\\backend\\data\\processed\\expanded_graph_t900.csv": "d9e4dc10a4a91154662d1a3c4ef047acb7145658ebe76d6344b07c15bc6bbf91",
+    "validation\\audit\\depmap_genx_gene_mapping.csv": "e49e3fbc0fd7b698d7613f831aeda77838341ccb3e34ffcb692963493dd94099"
+  },
+  "results": {
+    "N": 849,
+    "spearman_rho": 0.005331610368787381,
+    "asymptotic_p": 0.8767246841051257,
+    "bootstrap_ci_lower": -0.06402144287179597,
+    "bootstrap_ci_upper": 0.07464288035503301,
+    "bootstrap_B": 10000,
+    "bootstrap_valid_replicates": 10000,
+    "bootstrap_seed": 20260929,
+    "permutation_p": 0.8729127087291271,
+    "permutation_B": 10000,
+    "permutation_seed": 20260930,
+    "degree_matched_permutation_p": 0.9642035796420358,
+    "degree_matched_permutation_B": 10000,
+    "degree_matched_permutation_seed": 20260931
+  },
+  "degree_matched_null_distribution": {
+    "draws": 10000,
+    "mean": 0.05208469168770414,
+    "sd": 0.03193918741504535,
+    "median": 0.05201449239760343,
+    "q025": -0.011127706362422721,
+    "q975": 0.1147643007806613,
+    "note": "The stratified null retains between-bin structure and is shifted away from zero. The reported abs(null rho) >= abs(observed rho) fraction is descriptive and is not a conventional conditional test of added value."
+  },
+  "outputs": {
+    "validation\\frozen_depmap_validation_cohort.csv": "2b5862664eca4e0936b90eef223b9bab2c144fe19bce5cd57d56d24325b53d2c",
+    "validation\\frozen_depmap_target_population.csv": "a54ba79c641381ca44a58026a94201b1c06917cfb71f840056803d849632055e",
+    "validation\\depmap_validation_analysis_manifest.json": "846e01bf36a0db878314d9f84bc7e3b1cc12d3b73a8ef0eb8a3a688fcf3ef81f",
+    "validation\\depmap_validation_target_table.csv": "8081ce2e022579ebbb8366bfa0020f263a791dc193cc07258ba7c7f515cd5eef",
+    "validation\\results\\depmap_primary_result.csv": "5efc008195c03a5fbdce3a1a2183623884a73ed209bb51bf1161d06aeedf91b4",
+    "validation\\results\\depmap_sensitivity_results.csv": "9df2ad27ca11b4b1ba0c0e31ca31befad4367309158b2f6258b63d95d3819098",
+    "validation\\results\\depmap_permutation_null.csv": "823f340358d7131ce336b165e3895bbd411e2e2f8e51c707e67b7d01f7532065",
+    "validation\\results\\depmap_degree_matched_null.csv": "0bcbb4930dba93119e712409d955a4275e60c3d77dd60755230ae4e8038a16e2",
+    "validation\\results\\depmap_degree_matched_null_summary.csv": "ed94348acafd0ec3ee84ed77a1b412c1c668b2012f6000a68556d33446718995",
+    "validation\\results\\depmap_bootstrap_rhos.csv": "01a571c8373211ca8735d943e0d6eae9a95b62de3cc729dbc635f9a4733ebf21",
+    "validation\\results\\depmap_validation_summary.md": "d5e063aab0b3d130640ccd0bff3873db38e7c115f816264d15950422b67cae81",
+    "validation\\figures\\depmap_primary_association.png": "41a66ac0e8b5d58366f7bc80416395645e5826e9cec5cc2f924eefea89b460a2",
+    "validation\\figures\\depmap_degree_baseline.png": "b018ed9ebc8b961cee61b9340a873097ab3c4d9e2e52be9e5275ef7931784f63",
+    "validation\\figures\\depmap_permutation_null.png": "4914d7d43fb57de326ec6ebcad46c42c6312c3b7d4b6434291776a815f10db8a",
+    "Major Project\\validation\\validation_data_availability_report.md": "8a6f4901f0027915f152fb2a695ab1daa1acd6bdf0bd1b52feb21c6ea37bd4d4",
+    "validation\\audit\\README.md": "9f0f6c0db1807c081fc7c197cdb71526a2d900aa277d53e816e4117c85ca1b4c"
+  },
+  "protected_genx_inputs_current_sha256": {
+    "Major Project\\backend\\data\\processed\\expanded_graph_t900.csv": "d9e4dc10a4a91154662d1a3c4ef047acb7145658ebe76d6344b07c15bc6bbf91",
+    "Major Project\\backend\\data\\processed\\expanded_nodes_t900.csv": "6cd3ce98705a2ecbab4a8bdda6e3d0e330b2eae14756e90d6cd2df64e91adfc2",
+    "Major Project\\GENX_V2_METHODOLOGY_SPEC.md": "738c766005f177d05643f4e6ae5ccf0ba65f18325418c9a9ceae5c8242041267",
+    "Major Project\\backend\\path_cost.py": "caf77ac950370aa47bf3b084a74a9033bac8b43a418db27f01184e00f2886252",
+    "Major Project\\backend\\perturbation.py": "2d86a6d63dfd1beb96c1662e0448fe7351ab73a40a52006cb96596ffb2812c37",
+    "Major Project\\backend\\graph_loader.py": "9f55d5c14f2fcb6771bb420c12d0b97c8c39a50004f727ec151be35972732d92"
+  },
+  "test_suite": {
+    "command": "python -m pytest tests -q -p no:cacheprovider --basetemp=\"..\\validation\\pytest-tmp-postvalidation-20260929\"",
+    "result": "53 passed, 3 NetworkX FutureWarnings",
+    "temporary_directory_cleaned": true
+  }
+}

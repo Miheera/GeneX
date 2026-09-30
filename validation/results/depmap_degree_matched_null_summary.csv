@@ -1,0 +1,2 @@
+B,seed,observed_rho,null_mean,null_sd,null_median,null_q025,null_q975,abs_zero_reference_exceedance_fraction,interpretation_note
+10000,20260931,0.005331610368787381,0.05208469168770414,0.03193918741504535,0.05201449239760343,-0.011127706362422721,0.1147643007806613,0.9642035796420358,Degree-stratified permutation preserves between-bin structure; its null is shifted positive. The absolute-value exceedance fraction relative to zero is not a conventional conditional test of added value.

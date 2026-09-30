@@ -1,0 +1,7 @@
+threshold,status,error_message,node_count,edge_count,mean_degree,density,n_connected_components,is_fully_connected,processed_graph_csv
+400,success,,33,322,19.515151515151516,0.6098484848484849,1,True,D:\GenX\Major Project\backend\data\processed\sweep\breast_cancer_graph_t400.csv
+500,success,,33,296,17.939393939393938,0.5606060606060606,1,True,D:\GenX\Major Project\backend\data\processed\sweep\breast_cancer_graph_t500.csv
+600,success,,33,253,15.333333333333334,0.4791666666666667,1,True,D:\GenX\Major Project\backend\data\processed\sweep\breast_cancer_graph_t600.csv
+700,success,,33,209,12.666666666666666,0.3958333333333333,1,True,D:\GenX\Major Project\backend\data\processed\sweep\breast_cancer_graph_t700.csv
+800,success,,33,163,9.878787878787879,0.3087121212121212,1,True,D:\GenX\Major Project\backend\data\processed\sweep\breast_cancer_graph_t800.csv
+900,success,,32,116,7.25,0.23387096774193547,1,True,D:\GenX\Major Project\backend\data\processed\sweep\breast_cancer_graph_t900.csv

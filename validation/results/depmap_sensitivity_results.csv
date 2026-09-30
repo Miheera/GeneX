@@ -1,0 +1,6 @@
+analysis,N,spearman_rho,p_value,details
+degree_baseline,849,0.1630438354130856,1.790843233874975e-06,"Spearman(baseline unweighted degree, -median Chronos)"
+partial_spearman_controlling_degree,849,-0.03893949046606323,0.2573435922028384,Pearson correlation of residualized average midranks; control=average-ranked degree; scipy/numpy least squares
+mean_chronos_sensitivity,849,0.014098096804973748,0.6816592859185386,Same primary target set; outcome=-mean Chronos
+minimum_20_finite_models,849,0.005331610368787381,0.8767246841051257,Same mappings/cohort; outcome=-median Chronos; threshold >=20
+degree_matched_permutation_null,849,0.005331610368787381,0.9642035796420358,Within 10 frozen degree strata; B=10000; seed=20260931; empirical fraction uses |rho_null| >= |rho_observed| and is descriptive only because the stratified null is shifted away from zero

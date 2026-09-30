@@ -12,6 +12,11 @@ from typing import Iterable, Mapping
 import networkx as nx
 
 try:
+    from ..path_cost import require_positive_betweenness_costs
+except ImportError:
+    from path_cost import require_positive_betweenness_costs
+
+try:
     from .graph_builder import build_graph, write_processed_graph
 except ImportError:
     from graph_builder import build_graph, write_processed_graph
@@ -115,6 +120,7 @@ def _graph_metrics(graph: nx.Graph) -> dict[str, float | int | bool]:
 def _top_betweenness(graph: nx.Graph) -> str:
     if not graph:
         return ""
+    require_positive_betweenness_costs(graph)
     centrality = nx.betweenness_centrality(graph, weight="path_weight", normalized=True)
     ordered = sorted(centrality, key=lambda node: (-centrality[node], str(node)))
     return ",".join(str(node) for node in ordered[:10])
@@ -226,8 +232,8 @@ def main() -> None:
     parser.add_argument("--thresholds", type=_parse_thresholds, default=DEFAULT_THRESHOLDS)
     parser.add_argument("--shipping-threshold", type=int, default=DEFAULT_SHIPPING_THRESHOLD)
     parser.add_argument("--gene-universe", type=Path, default=Path(__file__).parents[1] / "data" / "breast_cancer_graph.csv")
-    parser.add_argument("--mapping", type=Path, default=Path(__file__).parents[2] / "major_project_dataset" / "9606.protein.info.v12.0.txt" / "9606.protein.info.v12.0.txt")
-    parser.add_argument("--links", type=Path, default=Path(__file__).parents[2] / "major_project_dataset" / "9606.protein.links.v12.0.txt" / "9606.protein.links.v12.0.txt")
+    parser.add_argument("--mapping", type=Path, default=Path(__file__).parents[3] / "major_project_dataset" / "9606.protein.info.v12.0.txt" / "9606.protein.info.v12.0.txt")
+    parser.add_argument("--links", type=Path, default=Path(__file__).parents[3] / "major_project_dataset" / "9606.protein.links.v12.0.txt" / "9606.protein.links.v12.0.txt")
     parser.add_argument("--output-root", type=Path, default=Path(__file__).parents[1] / "data" / "processed")
     args = parser.parse_args()
     logging.basicConfig(level=logging.INFO, format="%(levelname)s %(message)s")

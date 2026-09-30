@@ -11,18 +11,19 @@ from typing import Literal
 import networkx as nx
 
 try:
-    from ..perturbation import global_efficiency
+    from .. import perturbation
 except ImportError:
-    from perturbation import global_efficiency
+    import perturbation
 
 Strategy = Literal["degree", "betweenness", "random"]
-Result = dict[str, float | None]
+Result = dict[str, float | str | None]
 CSV_COLUMNS = [
     "fraction_removed",
     "efficiency",
     "efficiency_std",
     "lcc_fraction",
     "lcc_fraction_std",
+    "approximation_method",
 ]
 
 
@@ -31,7 +32,7 @@ def _metrics(graph: nx.Graph, original_nodes: int, removed: int) -> Result:
     if remaining <= 1:
         efficiency = 0.0
     else:
-        efficiency = global_efficiency(graph)
+        efficiency = perturbation.global_efficiency(graph)
 
     largest_component = max((len(component) for component in nx.connected_components(graph)), default=0)
     lcc_fraction = largest_component / remaining if remaining else 0.0
@@ -41,15 +42,12 @@ def _metrics(graph: nx.Graph, original_nodes: int, removed: int) -> Result:
         "efficiency_std": None,
         "lcc_fraction": lcc_fraction,
         "lcc_fraction_std": None,
+        "approximation_method": perturbation.APPROXIMATION_METHOD,
     }
 
 
 def _highest_centrality_node(graph: nx.Graph, strategy: Literal["degree", "betweenness"]):
-    centrality = (
-        nx.degree_centrality(graph)
-        if strategy == "degree"
-        else nx.betweenness_centrality(graph, weight="path_weight", normalized=True)
-    )
+    centrality = nx.degree_centrality(graph) if strategy == "degree" else perturbation.approximate_betweenness(graph)
     return min(centrality, key=lambda node: (-centrality[node], str(node)), default=None)
 
 
@@ -122,6 +120,7 @@ def analyze_attack_tolerance(
                 "efficiency_std": pstdev(efficiencies),
                 "lcc_fraction": mean(lcc_fractions),
                 "lcc_fraction_std": pstdev(lcc_fractions),
+                "approximation_method": perturbation.APPROXIMATION_METHOD,
             })
 
     _write_csv(strategy, results)

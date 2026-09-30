@@ -1,0 +1,11 @@
+fraction_removed,efficiency,efficiency_std,lcc_fraction,lcc_fraction_std,approximation_method
+0.0,0.35555555555555557,,0.6,,"approximate (k=100 samples, seed=42)"
+0.1,0.16666666666666666,,0.4444444444444444,,"approximate (k=100 samples, seed=42)"
+0.2,0.10714285714285714,,0.375,,"approximate (k=100 samples, seed=42)"
+0.3,0.047619047619047616,,0.2857142857142857,,"approximate (k=100 samples, seed=42)"
+0.4,0.0,,0.16666666666666666,,"approximate (k=100 samples, seed=42)"
+0.5,0.0,,0.2,,"approximate (k=100 samples, seed=42)"
+0.6,0.0,,0.25,,"approximate (k=100 samples, seed=42)"
+0.7,0.0,,0.3333333333333333,,"approximate (k=100 samples, seed=42)"
+0.8,0.0,,0.5,,"approximate (k=100 samples, seed=42)"
+0.9,0.0,,1.0,,"approximate (k=100 samples, seed=42)"

@@ -35,6 +35,7 @@ class ImpactedGene(BaseModel):
     direction: Literal["gain", "loss"]
 
 class PerturbResponse(BaseModel):
+    experiment_type: str = "virtual_topological_knockout"
     efficiency_baseline: float
     efficiency_perturbed: float
     efficiency_delta_pct: float
@@ -43,6 +44,29 @@ class PerturbResponse(BaseModel):
     gene_id: str
     top_impacted: List[ImpactedGene]
     network_fragmented: bool
+    connected_components: int
+    lcc_size: int
+    lcc_fraction: float
     isolated_genes: List[str]
     bc_baseline: Dict[str, float]
     bc_perturbed: Dict[str, float]
+    approximation_method: str
+
+class PropagatedGene(BaseModel):
+    gene: str
+    rank: int
+    propagation_score: float
+    absolute_score: float
+
+class PropagationResponse(BaseModel):
+    target_gene: str
+    perturbation_type: Literal["inhibition", "overexpression"]
+    perturbation_strength: float
+    propagation_model: str
+    alpha: float
+    propagation_scores: Dict[str, float]
+    top_impacted_genes: List[PropagatedGene]
+    iterations: int
+    converged: bool
+    ranking_strength_invariant: bool
+    interpretation: str

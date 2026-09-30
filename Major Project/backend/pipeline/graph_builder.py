@@ -9,6 +9,11 @@ from typing import Iterable
 import networkx as nx
 
 try:
+    from ..path_cost import confidence_to_path_cost, get_path_cost_model
+except ImportError:
+    from path_cost import confidence_to_path_cost, get_path_cost_model
+
+try:
     from .filter_string import StringEdge
 except ImportError:
     from filter_string import StringEdge
@@ -25,8 +30,9 @@ def build_graph(edges: Iterable[StringEdge]) -> nx.Graph:
                 gene1,
                 gene2,
                 weight=score / 1000.0,
-                path_weight=1000.0 / score if score > 0 else float("inf"),
+                path_weight=confidence_to_path_cost(score / 1000.0),
             )
+    graph.graph["path_cost_model"] = get_path_cost_model()
     return graph
 
 

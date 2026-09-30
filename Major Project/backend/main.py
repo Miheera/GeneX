@@ -20,10 +20,12 @@ from typing import Literal
 
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
 
 import graph_loader
 import perturbation as perturb_module
 from analysis.attack_tolerance import analyze_attack_tolerance
+from analysis.expression_correlation import analyze_structural_expression
 from analysis.open_targets import open_targets
 from models import (
     EdgeModel,
@@ -31,7 +33,9 @@ from models import (
     NodeModel,
     PerturbRequest,
     PerturbResponse,
+    PropagationResponse,
 )
+from propagation import compute_perturbation_propagation
 
 # ── Logging ───────────────────────────────────────────────────────────────────
 logging.basicConfig(
@@ -74,11 +78,16 @@ app.add_middleware(
         "http://127.0.0.1:5500",  # Live Server alternate
         "http://localhost:5173",   # Vite dev server
         "http://127.0.0.1:3000",
+        "http://localhost:8000",   # Same-origin (static files served here)
+        "http://127.0.0.1:8000",
+        "null",                    # file:// origin (local dev fallback)
     ],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+
 
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -138,15 +147,13 @@ async def get_graph(cancer_type: str) -> GraphResponse:
 # ─────────────────────────────────────────────────────────────────────────────
 @app.post(
     "/api/perturb",
-    response_model=PerturbResponse,
+    response_model=PerturbResponse | PropagationResponse,
     summary="Run a gene perturbation simulation",
     tags=["Perturbation"],
 )
-async def perturb_gene(request: PerturbRequest) -> PerturbResponse:
+async def perturb_gene(request: PerturbRequest) -> PerturbResponse | PropagationResponse:
     """
-    Simulate a perturbation on the breast cancer PPI network and return
-    updated efficiency metrics, betweenness centrality deltas, and
-    fragmentation information.
+    Run a virtual topological knockout or fixed-graph confidence-weighted RWR.
     """
     G = graph_loader.G
 
@@ -159,9 +166,17 @@ async def perturb_gene(request: PerturbRequest) -> PerturbResponse:
 
     # ── Run perturbation ──
     try:
-        result = perturb_module.run_perturbation(
-            G=G,
-            gene_id=request.gene_id,
+        if request.perturbation_type == "knockout":
+            result = perturb_module.run_perturbation(
+                G=G,
+                gene_id=request.gene_id,
+                perturbation_type="knockout",
+                strength=request.strength,
+            )
+            return PerturbResponse(**result)
+        result = compute_perturbation_propagation(
+            graph=G,
+            target_node=request.gene_id,
             perturbation_type=request.perturbation_type,
             strength=request.strength,
         )
@@ -172,7 +187,7 @@ async def perturb_gene(request: PerturbRequest) -> PerturbResponse:
             detail=f"Computation error: {str(exc)}",
         )
 
-    return PerturbResponse(**result)
+    return PropagationResponse(**result)
 
 
 @app.get("/api/analysis/attack-tolerance", tags=["Analysis"])
@@ -244,6 +259,24 @@ async def open_target_analysis(top_n: int = 20):
         raise HTTPException(status_code=500, detail=f"Analysis error: {str(exc)}") from exc
 
 
+@app.get("/api/analysis/structural-expression", tags=["Analysis"])
+async def structural_expression_analysis():
+    """Compare knockout network impact with TCGA BRCA median expression z-scores."""
+    expression_path = Path(__file__).parent / "data" / "processed" / "tcga_expression_scores.csv"
+    try:
+        return analyze_structural_expression(graph_loader.G, expression_path)
+    except FileNotFoundError as exc:
+        raise HTTPException(
+            status_code=404,
+            detail="TCGA expression scores are not available. Run pipeline/fetch_tcga_expression.py first.",
+        ) from exc
+    except ValueError as exc:
+        raise HTTPException(status_code=422, detail=str(exc)) from exc
+    except Exception as exc:
+        logger.exception("Structural-expression analysis failed")
+        raise HTTPException(status_code=500, detail=f"Analysis error: {str(exc)}") from exc
+
+
 # ─────────────────────────────────────────────────────────────────────────────
 # HEALTH CHECK
 # ─────────────────────────────────────────────────────────────────────────────
@@ -255,12 +288,21 @@ async def health_check() -> dict:
         "nodes": G.number_of_nodes(),
         "edges": G.number_of_edges(),
         "baseline_efficiency": round(perturb_module._baseline_efficiency, 6),
+        "approximation_method": perturb_module.APPROXIMATION_METHOD,
     }
 
 
-# ─────────────────────────────────────────────────────────────────────────────
+# ───────────────────────────────────────────────────────────────────────────────
+# STATIC FRONTEND  — MUST be last so /api/* routes match first
+# ───────────────────────────────────────────────────────────────────────────────
+# Serve index.html / app.js / style.css from Major Project/ at /
+_frontend_dir = Path(__file__).parents[1]  # Major Project/
+app.mount("/", StaticFiles(directory=str(_frontend_dir), html=True), name="frontend")
+
+
+# ───────────────────────────────────────────────────────────────────────────────
 # DEV ENTRY POINT
-# ─────────────────────────────────────────────────────────────────────────────
+# ───────────────────────────────────────────────────────────────────────────────
 if __name__ == "__main__":
     import uvicorn
 

@@ -1,0 +1,858 @@
+gene,split_method,logrank_p_value,hazard_direction,n_high,n_low
+AAMP,cBioPortal z-score threshold +/-2,0.505708740377,high-expression-better,17,1065
+AASDH,cBioPortal z-score threshold +/-2,0.706696497824,high-expression-better,15,1067
+ABL1,cBioPortal z-score threshold +/-2,0.370329832105,high-expression-worse,13,1069
+ABRAXAS1,cBioPortal z-score threshold +/-2,0.429218222374,high-expression-worse,21,1061
+ACACA,cBioPortal z-score threshold +/-2,0.445597070758,high-expression-better,37,1045
+ACTB,cBioPortal z-score threshold +/-2,0.726559465597,high-expression-worse,23,1059
+AGO2,cBioPortal z-score threshold +/-2,0.727592558528,high-expression-worse,30,1052
+AHR,cBioPortal z-score threshold +/-2,0.106091071215,high-expression-worse,14,1068
+AIFM2,cBioPortal z-score threshold +/-2,0.416626540202,high-expression-better,20,1062
+AJAP1,cBioPortal z-score threshold +/-2,0.865551656716,high-expression-better,44,1038
+AKT1,cBioPortal z-score threshold +/-2,0.961307833311,high-expression-worse,24,1058
+AKT2,cBioPortal z-score threshold +/-2,0.746887292191,high-expression-better,34,1048
+AKT3,cBioPortal z-score threshold +/-2,0.910418959361,high-expression-worse,29,1053
+ALK,median z-score split,0.883422279424,high-expression-better,541,541
+ANAPC1,cBioPortal z-score threshold +/-2,0.061786456546,high-expression-worse,21,1061
+ANAPC10,cBioPortal z-score threshold +/-2,0.473276097369,high-expression-worse,29,1053
+ANAPC11,cBioPortal z-score threshold +/-2,0.42504191756,high-expression-better,40,1042
+ANAPC13,cBioPortal z-score threshold +/-2,0.728054348486,high-expression-worse,26,1056
+ANAPC15,cBioPortal z-score threshold +/-2,0.393528258724,high-expression-better,37,1045
+ANAPC16,cBioPortal z-score threshold +/-2,0.783799305582,high-expression-worse,25,1057
+ANAPC2,cBioPortal z-score threshold +/-2,0.14490858746,high-expression-better,19,1063
+ANAPC4,cBioPortal z-score threshold +/-2,0.266265273705,high-expression-better,24,1058
+ANAPC5,cBioPortal z-score threshold +/-2,0.493918644503,high-expression-worse,31,1051
+ANAPC7,cBioPortal z-score threshold +/-2,0.992324415564,high-expression-worse,28,1054
+ANXA2,cBioPortal z-score threshold +/-2,0.601978304456,high-expression-worse,19,1063
+AP2A1,cBioPortal z-score threshold +/-2,0.728620481313,high-expression-better,33,1049
+AP2M1,cBioPortal z-score threshold +/-2,0.102200215764,high-expression-worse,45,1037
+APAF1,cBioPortal z-score threshold +/-2,0.486227052254,high-expression-better,16,1066
+APC,median z-score split,0.138749787941,high-expression-worse,541,541
+APEX1,cBioPortal z-score threshold +/-2,0.2048062764,high-expression-better,39,1043
+AR,median z-score split,0.767673482655,high-expression-better,541,541
+AREG,cBioPortal z-score threshold +/-2,0.971432101245,high-expression-better,16,1066
+ARHGEF7,cBioPortal z-score threshold +/-2,0.090434101768,high-expression-worse,31,1051
+ARID1A,median z-score split,0.890996181786,high-expression-worse,541,541
+ARID3A,cBioPortal z-score threshold +/-2,0.333904671253,high-expression-worse,27,1055
+ASF1A,cBioPortal z-score threshold +/-2,0.259702620328,high-expression-worse,37,1045
+ASF1B,cBioPortal z-score threshold +/-2,0.961823825267,high-expression-better,12,1070
+ATAD2,cBioPortal z-score threshold +/-2,0.391568585169,high-expression-worse,22,1060
+ATF3,cBioPortal z-score threshold +/-2,0.822359431584,high-expression-worse,33,1049
+ATG7,cBioPortal z-score threshold +/-2,0.838110932606,high-expression-better,37,1045
+ATM,cBioPortal z-score threshold +/-2,0.555801381898,high-expression-better,16,1066
+ATMIN,cBioPortal z-score threshold +/-2,0.489208071876,high-expression-better,30,1052
+ATP23,cBioPortal z-score threshold +/-2,0.987709415697,high-expression-worse,40,1042
+ATR,cBioPortal z-score threshold +/-2,0.000166375139,high-expression-worse,16,1066
+ATRIP,cBioPortal z-score threshold +/-2,0.983394463652,high-expression-worse,21,1061
+ATRX,median z-score split,0.034791604814,high-expression-worse,541,541
+AURKA,cBioPortal z-score threshold +/-2,0.752670982006,high-expression-worse,15,1067
+AURKB,cBioPortal z-score threshold +/-2,0.100022598588,high-expression-better,13,1069
+AXIN1,cBioPortal z-score threshold +/-2,0.99866169291,high-expression-better,25,1057
+BABAM1,cBioPortal z-score threshold +/-2,0.109542998859,high-expression-worse,45,1037
+BABAM2,cBioPortal z-score threshold +/-2,0.376582943119,high-expression-worse,23,1059
+BAK1,cBioPortal z-score threshold +/-2,0.025964297985,high-expression-worse,33,1049
+BANP,cBioPortal z-score threshold +/-2,0.000134070003,high-expression-worse,29,1053
+BAP1,median z-score split,0.496214858872,high-expression-better,541,541
+BARD1,median z-score split,0.363036915673,high-expression-better,541,541
+BAX,cBioPortal z-score threshold +/-2,0.021599483907,high-expression-worse,41,1041
+BBC3,cBioPortal z-score threshold +/-2,0.160264438925,high-expression-better,13,1069
+BCAR1,cBioPortal z-score threshold +/-2,0.010707766155,high-expression-better,24,1058
+BCCIP,cBioPortal z-score threshold +/-2,0.366686209497,high-expression-worse,26,1056
+BCL2,median z-score split,0.043434509299,high-expression-better,541,541
+BCL2L1,cBioPortal z-score threshold +/-2,0.379835211226,high-expression-better,29,1053
+BCL6,cBioPortal z-score threshold +/-2,0.301409293981,high-expression-worse,22,1060
+BCOR,median z-score split,0.650919250818,high-expression-better,541,541
+BECN1,cBioPortal z-score threshold +/-2,0.686779762029,high-expression-worse,18,1064
+BIRC5,cBioPortal z-score threshold +/-2,0.928562954565,high-expression-better,11,1071
+BLM,cBioPortal z-score threshold +/-2,0.09996863174,high-expression-worse,19,1063
+BLOC1S2,cBioPortal z-score threshold +/-2,0.367348869708,high-expression-better,27,1055
+BMI1,cBioPortal z-score threshold +/-2,0.612565689281,high-expression-worse,39,1043
+BRAF,cBioPortal z-score threshold +/-2,0.616705876508,high-expression-better,24,1058
+BRAP,cBioPortal z-score threshold +/-2,0.999845800705,high-expression-worse,28,1054
+BRAT1,cBioPortal z-score threshold +/-2,0.839636086731,high-expression-better,29,1053
+BRCA1,cBioPortal z-score threshold +/-2,0.601582694261,high-expression-worse,14,1068
+BRCA2,cBioPortal z-score threshold +/-2,0.00272672732,high-expression-worse,15,1067
+BRCC3,cBioPortal z-score threshold +/-2,0.92644077218,high-expression-better,22,1060
+BRD4,cBioPortal z-score threshold +/-2,0.427300537558,high-expression-better,28,1054
+BRD7,cBioPortal z-score threshold +/-2,0.027564604403,high-expression-worse,22,1060
+BRIP1,cBioPortal z-score threshold +/-2,0.534557724568,high-expression-better,12,1070
+BTC,cBioPortal z-score threshold +/-2,0.960038628013,high-expression-better,23,1059
+BTK,cBioPortal z-score threshold +/-2,0.594698254174,high-expression-better,20,1062
+BUB1B,median z-score split,0.121900437017,high-expression-worse,541,541
+CALM1,cBioPortal z-score threshold +/-2,0.14951668268,high-expression-better,28,1054
+CALM2,cBioPortal z-score threshold +/-2,0.923304957528,high-expression-worse,36,1046
+CALM3,cBioPortal z-score threshold +/-2,0.004753518039,high-expression-worse,33,1049
+CALML3,median z-score split,0.002282448767,high-expression-better,541,541
+CALML4,cBioPortal z-score threshold +/-2,0.160787296835,high-expression-better,41,1041
+CALML5,median z-score split,0.764471698207,high-expression-better,541,541
+CALML6,median z-score split,0.815640370589,high-expression-better,541,541
+CAPN1,cBioPortal z-score threshold +/-2,0.106189115697,high-expression-worse,19,1063
+CAPN2,cBioPortal z-score threshold +/-2,0.371890728783,high-expression-worse,11,1071
+CARM1,cBioPortal z-score threshold +/-2,0.13922803599,high-expression-worse,32,1050
+CASP10,cBioPortal z-score threshold +/-2,0.357735381017,high-expression-better,28,1054
+CASP3,cBioPortal z-score threshold +/-2,0.632118833924,high-expression-worse,31,1051
+CASP8,cBioPortal z-score threshold +/-2,0.430553789428,high-expression-worse,12,1070
+CASP9,cBioPortal z-score threshold +/-2,0.043683479493,high-expression-better,14,1068
+CAV1,cBioPortal z-score threshold +/-2,0.485911783745,high-expression-better,29,1053
+CAV2,cBioPortal z-score threshold +/-2,0.16512116899,high-expression-better,23,1059
+CAV3,median z-score split,0.889528048061,high-expression-better,400,682
+CBL,cBioPortal z-score threshold +/-2,0.572345995726,high-expression-worse,18,1064
+CBLB,cBioPortal z-score threshold +/-2,0.154468140096,high-expression-better,18,1064
+CBLC,median z-score split,0.853675658183,high-expression-worse,541,541
+CBLL1,cBioPortal z-score threshold +/-2,0.28438524198,high-expression-worse,23,1059
+CBX2,median z-score split,0.060720308537,high-expression-worse,541,541
+CBX4,cBioPortal z-score threshold +/-2,0.424708608585,high-expression-better,34,1048
+CBX8,cBioPortal z-score threshold +/-2,0.981783610619,high-expression-better,39,1043
+CCNA1,median z-score split,0.00972296939,high-expression-better,541,541
+CCNA2,cBioPortal z-score threshold +/-2,0.672822150801,high-expression-worse,14,1068
+CCNB1,cBioPortal z-score threshold +/-2,0.078839302479,high-expression-worse,11,1071
+CCND1,cBioPortal z-score threshold +/-2,0.676380373121,high-expression-worse,19,1063
+CCNE1,median z-score split,0.00307475285,high-expression-worse,541,541
+CCNG1,cBioPortal z-score threshold +/-2,0.973861571124,high-expression-better,16,1066
+CD151,cBioPortal z-score threshold +/-2,0.490443467755,high-expression-worse,19,1063
+CD19,median z-score split,0.017153707735,high-expression-better,541,541
+CD28,cBioPortal z-score threshold +/-2,0.177510872715,high-expression-better,26,1056
+CD44,cBioPortal z-score threshold +/-2,0.273750735078,high-expression-worse,17,1065
+CDC16,cBioPortal z-score threshold +/-2,0.64572534932,high-expression-worse,31,1051
+CDC23,cBioPortal z-score threshold +/-2,0.156173065803,high-expression-worse,22,1060
+CDC25A,cBioPortal z-score threshold +/-2,0.332230010268,high-expression-better,16,1066
+CDC25C,median z-score split,0.474032418766,high-expression-worse,541,541
+CDC26,cBioPortal z-score threshold +/-2,0.29363698069,high-expression-better,14,1068
+CDC27,cBioPortal z-score threshold +/-2,0.727801747011,high-expression-worse,26,1056
+CDC37,cBioPortal z-score threshold +/-2,0.146277352982,high-expression-worse,32,1050
+CDC42,cBioPortal z-score threshold +/-2,0.089095794068,high-expression-worse,13,1069
+CDC45,median z-score split,0.310033148065,high-expression-worse,540,542
+CDC7,cBioPortal z-score threshold +/-2,0.332775447148,high-expression-better,29,1053
+CDH1,median z-score split,0.093858021734,high-expression-worse,541,541
+CDH2,cBioPortal z-score threshold +/-2,0.76142479006,high-expression-better,41,1041
+CDH3,cBioPortal z-score threshold +/-2,0.22052138617,high-expression-worse,11,1071
+CDH5,cBioPortal z-score threshold +/-2,0.724524445643,high-expression-worse,15,1067
+CDIPT,cBioPortal z-score threshold +/-2,0.93913343657,high-expression-better,31,1051
+CDK1,cBioPortal z-score threshold +/-2,0.073174321801,high-expression-better,13,1069
+CDK2,cBioPortal z-score threshold +/-2,0.031153823034,high-expression-worse,31,1051
+CDK4,median z-score split,0.996339148903,high-expression-better,541,541
+CDK5,cBioPortal z-score threshold +/-2,0.984392039387,high-expression-better,31,1051
+CDKN1A,cBioPortal z-score threshold +/-2,0.003070482251,high-expression-worse,26,1056
+CDKN1B,median z-score split,0.523043433159,high-expression-better,541,541
+CDKN2A,median z-score split,0.217784267111,high-expression-better,541,541
+CDKN2C,cBioPortal z-score threshold +/-2,0.059281142675,high-expression-better,33,1049
+CEBPA,cBioPortal z-score threshold +/-2,0.179805647655,high-expression-better,21,1061
+CEBPB,cBioPortal z-score threshold +/-2,0.185840048546,high-expression-better,38,1044
+CETN2,cBioPortal z-score threshold +/-2,0.244718983977,high-expression-better,29,1053
+CHEK1,median z-score split,0.239706532711,high-expression-worse,541,541
+CHEK2,cBioPortal z-score threshold +/-2,0.115651928702,high-expression-better,32,1050
+CHUK,cBioPortal z-score threshold +/-2,0.668548646552,high-expression-worse,19,1063
+CLDN7,cBioPortal z-score threshold +/-2,0.000250685556,high-expression-worse,12,1070
+COP1,cBioPortal z-score threshold +/-2,0.633038738905,high-expression-worse,27,1055
+COPS5,median z-score split,0.004214835749,high-expression-worse,541,541
+CREB1,cBioPortal z-score threshold +/-2,0.308882991158,high-expression-worse,10,1072
+CREBBP,cBioPortal z-score threshold +/-2,0.221194136865,high-expression-better,10,1072
+CRK,cBioPortal z-score threshold +/-2,0.683911121317,high-expression-better,10,1072
+CRKL,cBioPortal z-score threshold +/-2,0.253176493303,high-expression-better,19,1063
+CSF1,cBioPortal z-score threshold +/-2,0.824718606231,high-expression-better,26,1056
+CSK,cBioPortal z-score threshold +/-2,0.609992902739,high-expression-better,34,1048
+CSNK1A1,cBioPortal z-score threshold +/-2,0.284893000101,high-expression-better,23,1059
+CSNK2A1,cBioPortal z-score threshold +/-2,0.690669570107,high-expression-worse,23,1059
+CSNK2A2,cBioPortal z-score threshold +/-2,0.478722425815,high-expression-better,21,1061
+CSNK2A3,median z-score split,0.343274963583,high-expression-worse,541,541
+CSNK2B,cBioPortal z-score threshold +/-2,0.164916293899,high-expression-worse,34,1048
+CSTF1,median z-score split,0.978520621935,high-expression-better,541,541
+CTNNA1,cBioPortal z-score threshold +/-2,0.998680063907,high-expression-better,12,1070
+CTNNA2,median z-score split,0.644964005308,high-expression-better,541,541
+CTNNA3,median z-score split,0.731576741421,high-expression-worse,541,541
+CTNNB1,cBioPortal z-score threshold +/-2,0.422991188385,high-expression-better,24,1058
+CTNND1,cBioPortal z-score threshold +/-2,0.566288503777,high-expression-better,18,1064
+CUL7,cBioPortal z-score threshold +/-2,0.449126032685,high-expression-better,23,1059
+CUL9,cBioPortal z-score threshold +/-2,0.089907862431,high-expression-worse,17,1065
+CYC1,median z-score split,0.136214527207,high-expression-worse,541,541
+CYCS,median z-score split,0.048798788352,high-expression-worse,541,541
+CYP19A1,median z-score split,0.671294297805,high-expression-worse,541,541
+DAB1,median z-score split,0.379874830094,high-expression-worse,541,541
+DAXX,cBioPortal z-score threshold +/-2,0.216843097102,high-expression-better,34,1048
+DBF4,cBioPortal z-score threshold +/-2,0.687032831487,high-expression-worse,26,1056
+DCLRE1C,cBioPortal z-score threshold +/-2,0.115305865591,high-expression-better,52,1030
+DCN,median z-score split,0.670013925774,high-expression-better,541,541
+DDB2,cBioPortal z-score threshold +/-2,0.18995813477,high-expression-better,23,1059
+DDIT4,cBioPortal z-score threshold +/-2,0.967385674651,high-expression-worse,28,1054
+DDX17,cBioPortal z-score threshold +/-2,0.645420143402,high-expression-better,22,1060
+DDX5,cBioPortal z-score threshold +/-2,0.439643411698,high-expression-better,42,1040
+DGCR8,cBioPortal z-score threshold +/-2,0.880095443307,high-expression-better,27,1055
+DHX9,cBioPortal z-score threshold +/-2,0.002055029922,high-expression-worse,15,1067
+DLG1,cBioPortal z-score threshold +/-2,0.483255847808,high-expression-worse,27,1055
+DMC1,cBioPortal z-score threshold +/-2,0.303092325268,high-expression-better,34,1048
+DNA2,cBioPortal z-score threshold +/-2,0.478228706375,high-expression-worse,21,1061
+DNAJB1,cBioPortal z-score threshold +/-2,0.191756834209,high-expression-better,33,1049
+DNMT1,cBioPortal z-score threshold +/-2,0.361889214987,high-expression-worse,45,1037
+DROSHA,cBioPortal z-score threshold +/-2,0.631694107347,high-expression-worse,34,1048
+E2F1,cBioPortal z-score threshold +/-2,0.329710051688,high-expression-better,14,1068
+E4F1,cBioPortal z-score threshold +/-2,0.970751625224,high-expression-better,26,1056
+EBAG9,median z-score split,0.196518907986,high-expression-worse,541,541
+EGF,cBioPortal z-score threshold +/-2,0.159992266359,high-expression-better,10,1072
+EGFR,cBioPortal z-score threshold +/-2,0.327850944631,high-expression-better,18,1064
+EGR1,cBioPortal z-score threshold +/-2,0.541328420561,high-expression-better,26,1056
+EHMT1,cBioPortal z-score threshold +/-2,0.33973314842,high-expression-worse,25,1057
+EHMT2,cBioPortal z-score threshold +/-2,0.688377662821,high-expression-worse,28,1054
+EML4,cBioPortal z-score threshold +/-2,0.177743010786,high-expression-better,35,1047
+EMSY,cBioPortal z-score threshold +/-2,0.448508391185,high-expression-better,36,1046
+ENO1,cBioPortal z-score threshold +/-2,0.150368358929,high-expression-worse,45,1037
+EP300,median z-score split,0.557704018193,high-expression-better,541,541
+EP400,cBioPortal z-score threshold +/-2,0.326768309164,high-expression-worse,13,1069
+EPCAM,cBioPortal z-score threshold +/-2,0.388816596101,high-expression-better,17,1065
+EPGN,median z-score split,0.162906551766,high-expression-better,541,541
+EPHA2,cBioPortal z-score threshold +/-2,0.503498092849,high-expression-better,29,1053
+EPN1,cBioPortal z-score threshold +/-2,0.871039891113,high-expression-better,31,1051
+EPS15,cBioPortal z-score threshold +/-2,0.62537079865,high-expression-worse,18,1064
+EPS15L1,cBioPortal z-score threshold +/-2,0.401271471662,high-expression-better,28,1054
+EPS8,cBioPortal z-score threshold +/-2,0.604851155957,high-expression-worse,12,1070
+ERBB2,median z-score split,0.878392952575,high-expression-better,541,541
+ERBB3,median z-score split,0.290575334658,high-expression-worse,541,541
+ERBB4,median z-score split,0.338447783754,high-expression-better,541,541
+ERCC1,cBioPortal z-score threshold +/-2,0.204065249739,high-expression-better,35,1047
+ERCC2,cBioPortal z-score threshold +/-2,0.440738320377,high-expression-worse,25,1057
+ERCC3,cBioPortal z-score threshold +/-2,0.219905441423,high-expression-better,24,1058
+ERCC4,cBioPortal z-score threshold +/-2,0.696364862927,high-expression-better,15,1067
+ERCC5,cBioPortal z-score threshold +/-2,0.107803599229,high-expression-better,20,1062
+ERCC8,cBioPortal z-score threshold +/-2,0.279837792449,high-expression-worse,24,1058
+EREG,median z-score split,0.066289502777,high-expression-better,541,541
+ERRFI1,cBioPortal z-score threshold +/-2,0.258824905197,high-expression-better,40,1042
+ERVFRD-1,median z-score split,0.978813462129,high-expression-better,541,541
+ESR1,median z-score split,0.267820632141,high-expression-worse,541,541
+ESR2,cBioPortal z-score threshold +/-2,0.357319072718,high-expression-better,30,1052
+ETS1,cBioPortal z-score threshold +/-2,0.265099931999,high-expression-better,19,1063
+ETS2,cBioPortal z-score threshold +/-2,0.897863092509,high-expression-worse,26,1056
+EXO1,median z-score split,0.019490146333,high-expression-worse,541,541
+EZH2,cBioPortal z-score threshold +/-2,0.458143666749,high-expression-better,27,1055
+F11R,cBioPortal z-score threshold +/-2,0.00029938825,high-expression-worse,25,1057
+FANCA,cBioPortal z-score threshold +/-2,0.608523463683,high-expression-worse,23,1059
+FANCB,cBioPortal z-score threshold +/-2,0.951159246271,high-expression-worse,27,1055
+FANCC,cBioPortal z-score threshold +/-2,0.963671742459,high-expression-worse,42,1040
+FANCD2,cBioPortal z-score threshold +/-2,0.123474824953,high-expression-worse,22,1060
+FANCE,cBioPortal z-score threshold +/-2,0.244477320931,high-expression-better,36,1046
+FANCF,cBioPortal z-score threshold +/-2,0.315102090235,high-expression-better,18,1064
+FANCG,cBioPortal z-score threshold +/-2,0.269342345515,high-expression-better,37,1045
+FANCI,cBioPortal z-score threshold +/-2,0.081652048746,high-expression-worse,21,1061
+FANCL,cBioPortal z-score threshold +/-2,0.584355152971,high-expression-worse,41,1041
+FANCM,cBioPortal z-score threshold +/-2,0.011747757706,high-expression-worse,16,1066
+FBXW7,cBioPortal z-score threshold +/-2,0.247083931502,high-expression-worse,34,1048
+FCER1G,cBioPortal z-score threshold +/-2,0.620075606745,high-expression-worse,20,1062
+FGF1,cBioPortal z-score threshold +/-2,0.512881212145,high-expression-worse,15,1067
+FGF10,median z-score split,0.433510739204,high-expression-better,541,541
+FGF13,median z-score split,0.931904280077,high-expression-worse,541,541
+FGF16,median z-score split,0.682785158753,high-expression-better,541,541
+FGF17,median z-score split,0.015437593308,high-expression-better,541,541
+FGF18,cBioPortal z-score threshold +/-2,0.71805327785,high-expression-better,22,1060
+FGF19,median z-score split,0.02551168313,high-expression-better,541,541
+FGF2,cBioPortal z-score threshold +/-2,0.420449051263,high-expression-worse,30,1052
+FGF20,median z-score split,0.595688017288,high-expression-better,541,541
+FGF21,median z-score split,0.189272639996,high-expression-worse,194,888
+FGF22,median z-score split,0.782905954017,high-expression-worse,400,682
+FGF23,median z-score split,0.990393335783,high-expression-better,127,955
+FGF3,median z-score split,0.471962631852,high-expression-better,313,769
+FGF4,median z-score split,0.926743517641,high-expression-worse,34,1048
+FGF5,median z-score split,0.263136850451,high-expression-worse,541,541
+FGF6,median z-score split,0.521786342659,high-expression-worse,12,1070
+FGF7,cBioPortal z-score threshold +/-2,0.017070485715,high-expression-worse,24,1058
+FGF8,median z-score split,0.93582951352,high-expression-better,327,755
+FGF9,median z-score split,0.011328684531,high-expression-better,541,541
+FGFR1,cBioPortal z-score threshold +/-2,0.081381112022,high-expression-better,44,1038
+FGFR2,cBioPortal z-score threshold +/-2,0.604227247487,high-expression-worse,17,1065
+FGFR3,cBioPortal z-score threshold +/-2,0.439008776518,high-expression-worse,14,1068
+FHL2,cBioPortal z-score threshold +/-2,0.664895016369,high-expression-better,22,1060
+FLNA,cBioPortal z-score threshold +/-2,0.125520043289,high-expression-better,16,1066
+FLOT1,cBioPortal z-score threshold +/-2,0.171301205717,high-expression-worse,27,1055
+FLOT2,cBioPortal z-score threshold +/-2,0.704284607016,high-expression-better,36,1046
+FLT3,cBioPortal z-score threshold +/-2,0.162138498614,high-expression-better,11,1071
+FN1,median z-score split,0.430334328385,high-expression-better,541,541
+FOS,cBioPortal z-score threshold +/-2,0.21341643449,high-expression-better,25,1057
+FOXA1,median z-score split,0.780531255286,high-expression-worse,541,541
+FOXO1,cBioPortal z-score threshold +/-2,0.790383330632,high-expression-better,15,1067
+FOXO3,cBioPortal z-score threshold +/-2,0.367497146576,high-expression-worse,23,1059
+FOXO4,cBioPortal z-score threshold +/-2,0.195364725507,high-expression-worse,14,1068
+FRK,cBioPortal z-score threshold +/-2,0.964710206454,high-expression-better,15,1067
+FRS2,cBioPortal z-score threshold +/-2,0.657515898755,high-expression-better,37,1045
+FYN,cBioPortal z-score threshold +/-2,0.081667749583,high-expression-better,26,1056
+G6PD,median z-score split,0.287158792439,high-expression-worse,541,541
+GAB1,cBioPortal z-score threshold +/-2,0.545744302404,high-expression-better,16,1066
+GAB2,cBioPortal z-score threshold +/-2,0.706585315296,high-expression-better,39,1043
+GADD45A,cBioPortal z-score threshold +/-2,0.13534998264,high-expression-better,30,1052
+GADD45B,cBioPortal z-score threshold +/-2,0.581102954895,high-expression-better,25,1057
+GADD45G,cBioPortal z-score threshold +/-2,0.093600430353,high-expression-better,29,1053
+GAPDH,median z-score split,0.955102745236,high-expression-worse,541,541
+GATA3,median z-score split,0.324773060032,high-expression-better,541,541
+GLS2,cBioPortal z-score threshold +/-2,0.902014327515,high-expression-better,11,1071
+GNA13,cBioPortal z-score threshold +/-2,0.285812516363,high-expression-better,33,1049
+GNAI1,cBioPortal z-score threshold +/-2,0.49745858403,high-expression-worse,26,1056
+GNAI2,cBioPortal z-score threshold +/-2,0.948892676581,high-expression-worse,17,1065
+GNAI3,cBioPortal z-score threshold +/-2,0.003263332283,high-expression-worse,25,1057
+GNAQ,median z-score split,0.674467695835,high-expression-worse,541,541
+GNL3,cBioPortal z-score threshold +/-2,0.816177689804,high-expression-worse,26,1056
+GPER1,median z-score split,0.036913889693,high-expression-better,541,541
+GPNMB,cBioPortal z-score threshold +/-2,0.863036931911,high-expression-better,18,1064
+GRAP2,cBioPortal z-score threshold +/-2,0.898085175771,high-expression-better,16,1066
+GRB10,cBioPortal z-score threshold +/-2,0.337669348494,high-expression-better,22,1060
+GRB2,cBioPortal z-score threshold +/-2,0.075022735118,high-expression-worse,49,1033
+GRB7,median z-score split,0.573936948017,high-expression-worse,541,541
+GREB1,median z-score split,0.078804423285,high-expression-better,541,541
+GSK3B,median z-score split,0.225836088873,high-expression-worse,541,541
+GTF2B,cBioPortal z-score threshold +/-2,0.865214566151,high-expression-worse,29,1053
+GTF2H1,cBioPortal z-score threshold +/-2,0.371507933088,high-expression-worse,31,1051
+GTSE1,cBioPortal z-score threshold +/-2,0.411009281917,high-expression-better,13,1069
+H2AC11,cBioPortal z-score threshold +/-2,0.720030485044,high-expression-better,37,1045
+H2AC15,cBioPortal z-score threshold +/-2,0.333909250472,high-expression-better,34,1048
+H2AC16,median z-score split,0.357340295669,high-expression-better,541,541
+H2AC17,cBioPortal z-score threshold +/-2,0.753859806331,high-expression-worse,35,1047
+H2AC20,cBioPortal z-score threshold +/-2,0.11120549544,high-expression-better,42,1040
+H2AC4,median z-score split,0.277980031943,high-expression-better,528,554
+H2AC6,median z-score split,0.493197831106,high-expression-better,541,541
+H2AC8,cBioPortal z-score threshold +/-2,0.512637073772,high-expression-better,15,1067
+H2AX,cBioPortal z-score threshold +/-2,0.005388119971,high-expression-worse,28,1054
+H2BC11,cBioPortal z-score threshold +/-2,0.253432816527,high-expression-better,28,1054
+H2BC12,cBioPortal z-score threshold +/-2,0.290026845633,high-expression-better,19,1063
+H2BC21,cBioPortal z-score threshold +/-2,0.132647741482,high-expression-better,15,1067
+H3C1,median z-score split,0.844671891579,high-expression-better,540,542
+H3C10,cBioPortal z-score threshold +/-2,0.370165335518,high-expression-better,23,1059
+H3C11,median z-score split,0.730472681164,high-expression-better,402,680
+H3C12,median z-score split,0.693664244601,high-expression-worse,541,541
+H3C2,median z-score split,0.171327101611,high-expression-better,541,541
+H3C3,median z-score split,0.729110676383,high-expression-worse,541,541
+H3C4,cBioPortal z-score threshold +/-2,0.101222969693,high-expression-better,17,1065
+H3C6,median z-score split,0.275454249848,high-expression-worse,541,541
+H3C7,median z-score split,0.793225401334,high-expression-better,541,541
+H3C8,median z-score split,0.147120337327,high-expression-worse,541,541
+H4C1,median z-score split,0.370555635542,high-expression-worse,541,541
+H4C11,cBioPortal z-score threshold +/-2,0.916391919983,high-expression-better,27,1055
+H4C12,median z-score split,0.819057786745,high-expression-better,502,580
+H4C13,median z-score split,0.978337796997,high-expression-better,137,945
+H4C14,cBioPortal z-score threshold +/-2,0.482698844155,high-expression-worse,34,1048
+H4C2,median z-score split,0.75212914695,high-expression-better,541,541
+H4C3,median z-score split,0.756183449866,high-expression-worse,541,541
+H4C4,median z-score split,0.535575258767,high-expression-better,541,541
+H4C5,median z-score split,0.781341438737,high-expression-worse,541,541
+H4C6,median z-score split,0.548198780256,high-expression-worse,161,921
+H4C8,cBioPortal z-score threshold +/-2,0.970160493093,high-expression-better,17,1065
+H4C9,median z-score split,0.17808971439,high-expression-worse,541,541
+HBEGF,cBioPortal z-score threshold +/-2,0.646338081332,high-expression-better,39,1043
+HCST,cBioPortal z-score threshold +/-2,0.067852274853,high-expression-better,33,1049
+HDAC1,cBioPortal z-score threshold +/-2,0.63317706395,high-expression-better,25,1057
+HDAC2,cBioPortal z-score threshold +/-2,0.771122932311,high-expression-better,49,1033
+HDAC6,cBioPortal z-score threshold +/-2,0.697875966758,high-expression-better,31,1051
+HGF,median z-score split,0.385314959889,high-expression-better,541,541
+HGS,cBioPortal z-score threshold +/-2,0.381727686809,high-expression-better,37,1045
+HIF1A,cBioPortal z-score threshold +/-2,0.162543250104,high-expression-better,17,1065
+HIPK1,cBioPortal z-score threshold +/-2,0.508071006514,high-expression-worse,15,1067
+HIPK2,median z-score split,0.167689057767,high-expression-better,541,541
+HIPK3,median z-score split,0.761159233985,high-expression-worse,541,541
+HIPK4,cBioPortal z-score threshold +/-2,0.890558126153,high-expression-better,23,1059
+HMG20B,cBioPortal z-score threshold +/-2,0.716848587304,high-expression-better,29,1053
+HMGB1,cBioPortal z-score threshold +/-2,0.456013127172,high-expression-worse,39,1043
+HMMR,median z-score split,0.438466066092,high-expression-worse,541,541
+HNRNPK,cBioPortal z-score threshold +/-2,0.595131517976,high-expression-worse,15,1067
+HRAS,cBioPortal z-score threshold +/-2,0.182409956926,high-expression-worse,32,1050
+HSF2BP,cBioPortal z-score threshold +/-2,0.707387209118,high-expression-worse,24,1058
+HSP90AA1,cBioPortal z-score threshold +/-2,0.013322296733,high-expression-worse,34,1048
+HSP90AB1,cBioPortal z-score threshold +/-2,0.241937987323,high-expression-worse,28,1054
+HSPA1B,cBioPortal z-score threshold +/-2,0.132245903406,high-expression-worse,28,1054
+HSPA4,cBioPortal z-score threshold +/-2,0.233196451617,high-expression-worse,14,1068
+HSPA8,median z-score split,0.053430701803,high-expression-worse,541,541
+HSPA9,cBioPortal z-score threshold +/-2,0.0001067575,high-expression-worse,36,1046
+HSPB1,cBioPortal z-score threshold +/-2,0.612952992007,high-expression-better,29,1053
+HTT,cBioPortal z-score threshold +/-2,0.016884493064,high-expression-worse,23,1059
+HUS1,cBioPortal z-score threshold +/-2,0.531641782169,high-expression-worse,35,1047
+ICOS,cBioPortal z-score threshold +/-2,0.180761316083,high-expression-better,16,1066
+IFI16,cBioPortal z-score threshold +/-2,0.679093685912,high-expression-worse,21,1061
+IFNGR1,cBioPortal z-score threshold +/-2,0.968264048663,high-expression-worse,34,1048
+IGF1,median z-score split,0.489204207508,high-expression-better,541,541
+IGF1R,cBioPortal z-score threshold +/-2,0.436452761122,high-expression-worse,16,1066
+IGFBP3,cBioPortal z-score threshold +/-2,0.009793253686,high-expression-worse,34,1048
+IKBKB,cBioPortal z-score threshold +/-2,0.694421528278,high-expression-better,26,1056
+IKBKG,cBioPortal z-score threshold +/-2,0.490880089201,high-expression-better,28,1054
+IL6,cBioPortal z-score threshold +/-2,0.69813347479,high-expression-worse,37,1045
+IL6ST,median z-score split,0.512018449789,high-expression-better,541,541
+ILK,cBioPortal z-score threshold +/-2,0.030486779194,high-expression-worse,29,1053
+ING1,median z-score split,0.132457419748,high-expression-better,541,541
+ING4,cBioPortal z-score threshold +/-2,0.082794006182,high-expression-worse,32,1050
+ING5,cBioPortal z-score threshold +/-2,0.128782689607,high-expression-better,18,1064
+INPP4A,cBioPortal z-score threshold +/-2,0.981586804529,high-expression-worse,14,1068
+INPP4B,median z-score split,0.383641201296,high-expression-better,541,541
+INPP5B,cBioPortal z-score threshold +/-2,0.904853355494,high-expression-worse,20,1062
+INPP5D,cBioPortal z-score threshold +/-2,0.432961873344,high-expression-better,26,1056
+INPP5E,cBioPortal z-score threshold +/-2,0.810538093628,high-expression-worse,22,1060
+INPP5F,cBioPortal z-score threshold +/-2,0.385801110581,high-expression-better,29,1053
+INPPL1,cBioPortal z-score threshold +/-2,0.956159496155,high-expression-better,36,1046
+INS,median z-score split,0.602890473415,high-expression-better,24,1058
+INSR,cBioPortal z-score threshold +/-2,0.849152754911,high-expression-worse,26,1056
+IQGAP1,cBioPortal z-score threshold +/-2,0.940682616307,high-expression-better,17,1065
+IRS1,median z-score split,0.427687464111,high-expression-better,541,541
+IRS2,cBioPortal z-score threshold +/-2,0.521040486184,high-expression-better,39,1043
+IRS4,median z-score split,0.022212759221,high-expression-better,541,541
+ITGA2,cBioPortal z-score threshold +/-2,0.549561339962,high-expression-better,12,1070
+ITGAE,cBioPortal z-score threshold +/-2,0.261037685981,high-expression-better,35,1047
+ITGAM,cBioPortal z-score threshold +/-2,0.294662626697,high-expression-better,20,1062
+ITGB1,cBioPortal z-score threshold +/-2,0.223919855174,high-expression-worse,22,1060
+ITGB2,cBioPortal z-score threshold +/-2,0.039813755356,high-expression-better,22,1060
+ITK,cBioPortal z-score threshold +/-2,0.222517429927,high-expression-better,14,1068
+JAK1,cBioPortal z-score threshold +/-2,0.267171408469,high-expression-better,16,1066
+JAK2,cBioPortal z-score threshold +/-2,0.321290460179,high-expression-better,25,1057
+JAK3,cBioPortal z-score threshold +/-2,0.161370082045,high-expression-better,27,1055
+JMY,median z-score split,0.315734825319,high-expression-worse,541,541
+JUN,cBioPortal z-score threshold +/-2,0.130732244052,high-expression-better,30,1052
+JUP,cBioPortal z-score threshold +/-2,0.046377865005,high-expression-worse,21,1061
+KAT2A,cBioPortal z-score threshold +/-2,0.651584375558,high-expression-worse,25,1057
+KAT2B,cBioPortal z-score threshold +/-2,0.533269731046,high-expression-worse,18,1064
+KAT5,cBioPortal z-score threshold +/-2,0.973596267967,high-expression-worse,26,1056
+KDM1A,cBioPortal z-score threshold +/-2,0.160231419223,high-expression-worse,45,1037
+KDM4B,median z-score split,0.00336739364,high-expression-better,541,541
+KDR,cBioPortal z-score threshold +/-2,0.967639984534,high-expression-better,12,1070
+KEAP1,cBioPortal z-score threshold +/-2,0.147288387213,high-expression-worse,23,1059
+KISS1R,median z-score split,0.636491889038,high-expression-better,541,541
+KIT,cBioPortal z-score threshold +/-2,0.036745915879,high-expression-worse,25,1057
+KITLG,cBioPortal z-score threshold +/-2,0.804665735582,high-expression-worse,19,1063
+KLB,cBioPortal z-score threshold +/-2,0.945948583812,high-expression-worse,40,1042
+KLF4,cBioPortal z-score threshold +/-2,0.981441438084,high-expression-worse,25,1057
+KLRG1,cBioPortal z-score threshold +/-2,0.467701327292,high-expression-better,30,1052
+KMT5A,cBioPortal z-score threshold +/-2,0.308015425538,high-expression-worse,37,1045
+KRAS,cBioPortal z-score threshold +/-2,0.003458635665,high-expression-worse,29,1053
+L1CAM,median z-score split,0.369042401955,high-expression-worse,541,541
+L3MBTL1,cBioPortal z-score threshold +/-2,0.873935429506,high-expression-better,10,1072
+LAPTM4B,cBioPortal z-score threshold +/-2,0.848278739549,high-expression-better,22,1060
+LGALS3,cBioPortal z-score threshold +/-2,0.369455181084,high-expression-better,11,1071
+LIFR,cBioPortal z-score threshold +/-2,0.928153498396,high-expression-worse,20,1062
+LIG4,cBioPortal z-score threshold +/-2,0.567665796578,high-expression-worse,16,1066
+LRIG1,median z-score split,0.279610249854,high-expression-better,541,541
+LYN,cBioPortal z-score threshold +/-2,0.375128019313,high-expression-better,43,1039
+MAGI1,median z-score split,0.261347021273,high-expression-better,541,541
+MAGI2,cBioPortal z-score threshold +/-2,0.448298155524,high-expression-better,40,1042
+MAGI3,cBioPortal z-score threshold +/-2,0.524298003427,high-expression-worse,15,1067
+MAPK1,cBioPortal z-score threshold +/-2,0.875888916689,high-expression-worse,21,1061
+MAPK11,cBioPortal z-score threshold +/-2,0.997892602766,high-expression-better,23,1059
+MAPK12,cBioPortal z-score threshold +/-2,0.108331765639,high-expression-worse,30,1052
+MAPK13,cBioPortal z-score threshold +/-2,0.464712836508,high-expression-better,16,1066
+MAPK14,cBioPortal z-score threshold +/-2,0.182743760932,high-expression-better,23,1059
+MAPK3,cBioPortal z-score threshold +/-2,0.867884122242,high-expression-better,30,1052
+MAPK8,median z-score split,0.751633674963,high-expression-worse,541,541
+MAPK9,cBioPortal z-score threshold +/-2,0.847019463884,high-expression-better,24,1058
+MARK4,cBioPortal z-score threshold +/-2,0.001343127955,high-expression-worse,33,1049
+MAST2,cBioPortal z-score threshold +/-2,0.163895684112,high-expression-better,30,1052
+MCAT,cBioPortal z-score threshold +/-2,0.980850756489,high-expression-better,30,1052
+MCL1,cBioPortal z-score threshold +/-2,0.14770625134,high-expression-worse,28,1054
+MCM4,cBioPortal z-score threshold +/-2,0.064051381511,high-expression-worse,22,1060
+MDC1,cBioPortal z-score threshold +/-2,0.593826719424,high-expression-worse,32,1050
+MDM2,median z-score split,0.518382358664,high-expression-worse,541,541
+MDM4,cBioPortal z-score threshold +/-2,0.576144162896,high-expression-better,22,1060
+MED1,median z-score split,0.903957595586,high-expression-better,541,541
+MED17,cBioPortal z-score threshold +/-2,0.001697998569,high-expression-worse,32,1050
+MEN1,cBioPortal z-score threshold +/-2,0.869802099236,high-expression-worse,26,1056
+MET,cBioPortal z-score threshold +/-2,0.819011127863,high-expression-worse,12,1070
+MLH1,cBioPortal z-score threshold +/-2,0.006802235346,high-expression-worse,13,1069
+MMP9,cBioPortal z-score threshold +/-2,0.508028654572,high-expression-better,14,1068
+MORF4L1,cBioPortal z-score threshold +/-2,0.077919375882,high-expression-worse,26,1056
+MRAS,cBioPortal z-score threshold +/-2,0.089436978358,high-expression-better,42,1040
+MRE11,cBioPortal z-score threshold +/-2,0.00550411588,high-expression-worse,17,1065
+MRPL17,cBioPortal z-score threshold +/-2,0.064127998761,high-expression-worse,38,1044
+MRPL21,median z-score split,0.764136016456,high-expression-better,541,541
+MSH2,cBioPortal z-score threshold +/-2,0.87417281806,high-expression-worse,49,1033
+MSH3,cBioPortal z-score threshold +/-2,0.003972278265,high-expression-worse,16,1066
+MSH6,cBioPortal z-score threshold +/-2,0.541683014593,high-expression-worse,42,1040
+MTA1,cBioPortal z-score threshold +/-2,0.855496420273,high-expression-worse,27,1055
+MTOR,cBioPortal z-score threshold +/-2,0.508475767017,high-expression-better,12,1070
+MUC1,median z-score split,0.661468552395,high-expression-better,541,541
+MUS81,cBioPortal z-score threshold +/-2,0.17433355813,high-expression-worse,25,1057
+MYC,cBioPortal z-score threshold +/-2,0.988515720537,high-expression-worse,16,1066
+MZT1,cBioPortal z-score threshold +/-2,0.011959809765,high-expression-worse,36,1046
+MZT2B,cBioPortal z-score threshold +/-2,0.835494179737,high-expression-better,28,1054
+NBN,cBioPortal z-score threshold +/-2,0.775666835478,high-expression-better,29,1053
+NCK1,cBioPortal z-score threshold +/-2,0.773061533185,high-expression-worse,51,1031
+NCL,cBioPortal z-score threshold +/-2,0.891339530971,high-expression-worse,41,1041
+NCOA1,cBioPortal z-score threshold +/-2,0.396139231131,high-expression-worse,11,1071
+NCOA2,median z-score split,0.113377439641,high-expression-worse,541,541
+NCOA3,cBioPortal z-score threshold +/-2,0.680597306087,high-expression-better,25,1057
+NCOA6,cBioPortal z-score threshold +/-2,0.93326385327,high-expression-better,23,1059
+NCOR1,cBioPortal z-score threshold +/-2,0.765505363488,high-expression-better,12,1070
+NCOR2,cBioPortal z-score threshold +/-2,0.857988493101,high-expression-better,16,1066
+NDN,cBioPortal z-score threshold +/-2,0.625267848562,high-expression-better,11,1071
+NDUFA1,median z-score split,0.403045757464,high-expression-worse,541,541
+NDUFA10,cBioPortal z-score threshold +/-2,0.756866925515,high-expression-better,29,1053
+NDUFA12,cBioPortal z-score threshold +/-2,0.218506552055,high-expression-better,35,1047
+NDUFA13,cBioPortal z-score threshold +/-2,0.20131815987,high-expression-better,42,1040
+NDUFA2,cBioPortal z-score threshold +/-2,0.861698243842,high-expression-better,37,1045
+NDUFA3,cBioPortal z-score threshold +/-2,0.465285471914,high-expression-better,45,1037
+NDUFA5,cBioPortal z-score threshold +/-2,0.473237996023,high-expression-worse,29,1053
+NDUFA6,cBioPortal z-score threshold +/-2,0.81338232948,high-expression-better,40,1042
+NDUFA7,cBioPortal z-score threshold +/-2,0.135826087476,high-expression-better,35,1047
+NDUFA8,cBioPortal z-score threshold +/-2,0.61940571899,high-expression-better,36,1046
+NDUFB10,cBioPortal z-score threshold +/-2,0.452488839377,high-expression-better,32,1050
+NDUFB11,median z-score split,0.392731579407,high-expression-better,541,541
+NDUFB3,cBioPortal z-score threshold +/-2,0.310006573156,high-expression-worse,36,1046
+NDUFB4,cBioPortal z-score threshold +/-2,0.58245295389,high-expression-worse,36,1046
+NDUFB5,median z-score split,0.725422642835,high-expression-better,540,542
+NDUFB6,cBioPortal z-score threshold +/-2,0.618338463927,high-expression-worse,33,1049
+NDUFB7,cBioPortal z-score threshold +/-2,0.908992670181,high-expression-better,42,1040
+NDUFB8,cBioPortal z-score threshold +/-2,0.153950194678,high-expression-better,48,1034
+NDUFB9,median z-score split,0.017428430401,high-expression-worse,541,541
+NDUFC2,median z-score split,0.796285623787,high-expression-better,541,541
+NDUFS1,cBioPortal z-score threshold +/-2,0.09277244945,high-expression-worse,21,1061
+NDUFS2,cBioPortal z-score threshold +/-2,0.036291427307,high-expression-worse,29,1053
+NDUFS3,median z-score split,0.387228911084,high-expression-better,541,541
+NDUFS4,cBioPortal z-score threshold +/-2,0.000771468977,high-expression-worse,26,1056
+NDUFS5,median z-score split,0.087581198365,high-expression-better,541,541
+NDUFS6,cBioPortal z-score threshold +/-2,0.00852643551,high-expression-worse,42,1040
+NDUFS7,cBioPortal z-score threshold +/-2,0.660678647201,high-expression-better,38,1044
+NDUFS8,cBioPortal z-score threshold +/-2,0.837685593391,high-expression-better,42,1040
+NDUFV1,cBioPortal z-score threshold +/-2,0.507718758641,high-expression-worse,40,1042
+NDUFV2,cBioPortal z-score threshold +/-2,0.184185827324,high-expression-better,26,1056
+NDUFV3,cBioPortal z-score threshold +/-2,0.016060912677,high-expression-worse,41,1041
+NECTIN1,cBioPortal z-score threshold +/-2,0.390939800654,high-expression-worse,34,1048
+NEDD4,median z-score split,0.646109115999,high-expression-worse,541,541
+NELFB,cBioPortal z-score threshold +/-2,0.454805074161,high-expression-worse,35,1047
+NFKB1,cBioPortal z-score threshold +/-2,0.395686821807,high-expression-better,18,1064
+NFKBIA,cBioPortal z-score threshold +/-2,0.099908745417,high-expression-better,30,1052
+NGFR,cBioPortal z-score threshold +/-2,0.644829958045,high-expression-worse,11,1071
+NHEJ1,cBioPortal z-score threshold +/-2,0.13270421816,high-expression-better,24,1058
+NOC2L,cBioPortal z-score threshold +/-2,0.571972449006,high-expression-better,35,1047
+NOP53,cBioPortal z-score threshold +/-2,0.392783300975,high-expression-better,24,1058
+NPM1,cBioPortal z-score threshold +/-2,0.883649495835,high-expression-better,31,1051
+NQO1,cBioPortal z-score threshold +/-2,0.7824835271,high-expression-better,14,1068
+NR3C1,median z-score split,0.39153728205,high-expression-better,541,541
+NRAS,cBioPortal z-score threshold +/-2,0.468547862057,high-expression-better,17,1065
+NRG1,cBioPortal z-score threshold +/-2,0.159042856098,high-expression-better,22,1060
+NRG2,median z-score split,0.004226092389,high-expression-better,541,541
+NRG4,median z-score split,0.260659083461,high-expression-better,541,541
+NRIP1,cBioPortal z-score threshold +/-2,0.454578467167,high-expression-better,17,1065
+NTRK1,cBioPortal z-score threshold +/-2,0.541482845506,high-expression-better,39,1043
+NUMB,cBioPortal z-score threshold +/-2,0.287453841119,high-expression-better,17,1065
+OCLN,cBioPortal z-score threshold +/-2,0.969460541239,high-expression-better,10,1072
+OCRL,cBioPortal z-score threshold +/-2,0.089852215708,high-expression-worse,20,1062
+OGT,cBioPortal z-score threshold +/-2,0.181086914335,high-expression-worse,31,1051
+OLA1,cBioPortal z-score threshold +/-2,0.680937547573,high-expression-worse,27,1055
+OTUD3,cBioPortal z-score threshold +/-2,0.188620623988,high-expression-worse,24,1058
+OXSM,cBioPortal z-score threshold +/-2,0.691490797778,high-expression-better,27,1055
+PALB2,cBioPortal z-score threshold +/-2,0.396763013702,high-expression-worse,20,1062
+PARD3,cBioPortal z-score threshold +/-2,0.48226692701,high-expression-worse,21,1061
+PARD6A,cBioPortal z-score threshold +/-2,0.233920427845,high-expression-better,36,1046
+PARD6B,cBioPortal z-score threshold +/-2,0.76471203866,high-expression-worse,21,1061
+PARD6G,cBioPortal z-score threshold +/-2,0.580922429737,high-expression-better,27,1055
+PARK7,cBioPortal z-score threshold +/-2,0.40122630591,high-expression-worse,33,1049
+PARP1,cBioPortal z-score threshold +/-2,0.753299583825,high-expression-worse,28,1054
+PAXIP1,cBioPortal z-score threshold +/-2,0.874306271258,high-expression-worse,33,1049
+PAXX,cBioPortal z-score threshold +/-2,0.731205866191,high-expression-better,40,1042
+PCBP4,cBioPortal z-score threshold +/-2,0.6842710148,high-expression-better,29,1053
+PCGF2,cBioPortal z-score threshold +/-2,0.213524367087,high-expression-better,32,1050
+PCGF6,cBioPortal z-score threshold +/-2,0.814963247586,high-expression-better,38,1044
+PCNA,cBioPortal z-score threshold +/-2,0.213220710342,high-expression-worse,26,1056
+PDCD6IP,cBioPortal z-score threshold +/-2,0.080829979791,high-expression-worse,12,1070
+PDGFA,cBioPortal z-score threshold +/-2,0.686146465623,high-expression-worse,20,1062
+PDGFB,cBioPortal z-score threshold +/-2,0.07713873031,high-expression-better,32,1050
+PDGFC,cBioPortal z-score threshold +/-2,0.575034808746,high-expression-worse,17,1065
+PDGFD,cBioPortal z-score threshold +/-2,0.476893383487,high-expression-worse,13,1069
+PDGFRA,median z-score split,0.958997840312,high-expression-better,541,541
+PDGFRB,cBioPortal z-score threshold +/-2,0.014539386805,high-expression-worse,11,1071
+PDPK1,cBioPortal z-score threshold +/-2,0.35626666648,high-expression-worse,12,1070
+PDS5B,cBioPortal z-score threshold +/-2,0.126083123649,high-expression-worse,16,1066
+PELP1,cBioPortal z-score threshold +/-2,0.757369634528,high-expression-worse,38,1044
+PERP,cBioPortal z-score threshold +/-2,0.891239792702,high-expression-better,18,1064
+PEX5,cBioPortal z-score threshold +/-2,0.511110373832,high-expression-worse,33,1049
+PGR,median z-score split,0.075480159918,high-expression-better,541,541
+PHB2,cBioPortal z-score threshold +/-2,0.514911987804,high-expression-better,37,1045
+PHC1,cBioPortal z-score threshold +/-2,0.171137759252,high-expression-better,27,1055
+PHC2,cBioPortal z-score threshold +/-2,0.965859896757,high-expression-better,26,1056
+PHC3,cBioPortal z-score threshold +/-2,0.679373669478,high-expression-worse,18,1064
+PHF20,cBioPortal z-score threshold +/-2,0.012070134263,high-expression-worse,25,1057
+PHF21A,cBioPortal z-score threshold +/-2,0.841560314257,high-expression-worse,28,1054
+PI4K2A,cBioPortal z-score threshold +/-2,0.615602882812,high-expression-better,18,1064
+PI4K2B,cBioPortal z-score threshold +/-2,0.758649354723,high-expression-worse,25,1057
+PI4KA,cBioPortal z-score threshold +/-2,0.082263094529,high-expression-worse,15,1067
+PI4KB,cBioPortal z-score threshold +/-2,0.077436981839,high-expression-worse,24,1058
+PIAS1,median z-score split,0.388930662836,high-expression-worse,541,541
+PIAS4,cBioPortal z-score threshold +/-2,0.573160635434,high-expression-better,25,1057
+PIDD1,cBioPortal z-score threshold +/-2,0.851726414339,high-expression-better,29,1053
+PIK3AP1,cBioPortal z-score threshold +/-2,0.428709064524,high-expression-better,27,1055
+PIK3C2A,cBioPortal z-score threshold +/-2,0.739276618573,high-expression-better,11,1071
+PIK3C2B,cBioPortal z-score threshold +/-2,0.467867838737,high-expression-better,16,1066
+PIK3C2G,median z-score split,0.609747146815,high-expression-worse,541,541
+PIK3C3,cBioPortal z-score threshold +/-2,0.930173242264,high-expression-worse,15,1067
+PIK3CA,cBioPortal z-score threshold +/-2,0.068207087244,high-expression-worse,16,1066
+PIK3CB,cBioPortal z-score threshold +/-2,0.4618880494,high-expression-worse,29,1053
+PIK3CD,cBioPortal z-score threshold +/-2,0.501728999411,high-expression-better,34,1048
+PIK3CG,cBioPortal z-score threshold +/-2,0.833651944058,high-expression-worse,12,1070
+PIK3R1,cBioPortal z-score threshold +/-2,0.718355454517,high-expression-worse,19,1063
+PIK3R2,cBioPortal z-score threshold +/-2,0.095566285227,high-expression-worse,37,1045
+PIK3R3,cBioPortal z-score threshold +/-2,0.129965075797,high-expression-worse,18,1064
+PIK3R5,cBioPortal z-score threshold +/-2,0.35679722365,high-expression-better,21,1061
+PIK3R6,cBioPortal z-score threshold +/-2,0.72186927828,high-expression-worse,23,1059
+PIKFYVE,median z-score split,0.39508913965,high-expression-worse,541,541
+PIN1,cBioPortal z-score threshold +/-2,0.719415000813,high-expression-better,31,1051
+PIP4K2A,cBioPortal z-score threshold +/-2,0.500733185517,high-expression-better,15,1067
+PIP4K2B,median z-score split,0.748881257381,high-expression-worse,541,541
+PIP4K2C,cBioPortal z-score threshold +/-2,0.568167245471,high-expression-better,24,1058
+PIP4P1,cBioPortal z-score threshold +/-2,0.46875864962,high-expression-better,26,1056
+PIP4P2,cBioPortal z-score threshold +/-2,0.396021117619,high-expression-better,21,1061
+PIP5K1A,cBioPortal z-score threshold +/-2,0.016427566095,high-expression-worse,20,1062
+PIP5K1B,cBioPortal z-score threshold +/-2,0.093490465132,high-expression-worse,14,1068
+PIP5K1C,cBioPortal z-score threshold +/-2,0.000679712638,high-expression-worse,15,1067
+PIP5KL1,median z-score split,0.207060855371,high-expression-better,541,541
+PLCB1,cBioPortal z-score threshold +/-2,0.673102737754,high-expression-worse,15,1067
+PLCB2,cBioPortal z-score threshold +/-2,0.910292336703,high-expression-worse,25,1057
+PLCB3,cBioPortal z-score threshold +/-2,0.541923818227,high-expression-worse,21,1061
+PLCB4,median z-score split,0.36803628371,high-expression-worse,541,541
+PLCD1,cBioPortal z-score threshold +/-2,0.622611563576,high-expression-worse,26,1056
+PLCD3,cBioPortal z-score threshold +/-2,0.789217659042,high-expression-worse,18,1064
+PLCD4,median z-score split,0.586054229299,high-expression-worse,541,541
+PLCE1,cBioPortal z-score threshold +/-2,0.19123553529,high-expression-better,30,1052
+PLCG1,cBioPortal z-score threshold +/-2,0.710107984783,high-expression-better,32,1050
+PLCG2,cBioPortal z-score threshold +/-2,0.49045869347,high-expression-better,36,1046
+PLCH1,median z-score split,0.012352178478,high-expression-worse,541,541
+PLCH2,cBioPortal z-score threshold +/-2,0.82333590906,high-expression-worse,14,1068
+PLCZ1,median z-score split,0.200549129743,high-expression-better,240,842
+PLK1,cBioPortal z-score threshold +/-2,0.164361847026,high-expression-worse,11,1071
+PLK3,cBioPortal z-score threshold +/-2,0.350948473463,high-expression-better,23,1059
+PMAIP1,cBioPortal z-score threshold +/-2,0.556732574245,high-expression-better,24,1058
+PML,cBioPortal z-score threshold +/-2,0.672304144354,high-expression-worse,37,1045
+PMS2,cBioPortal z-score threshold +/-2,0.03022073734,high-expression-worse,30,1052
+POLD1,cBioPortal z-score threshold +/-2,0.331912517115,high-expression-worse,41,1041
+POLE,cBioPortal z-score threshold +/-2,0.670712350904,high-expression-worse,30,1052
+POLI,cBioPortal z-score threshold +/-2,0.312100229486,high-expression-better,17,1065
+POLK,median z-score split,0.897773878613,high-expression-worse,541,541
+POLR2A,cBioPortal z-score threshold +/-2,0.195010228259,high-expression-worse,15,1067
+POU2F1,cBioPortal z-score threshold +/-2,0.183325455633,high-expression-better,16,1066
+PPARG,cBioPortal z-score threshold +/-2,0.485405589751,high-expression-better,35,1047
+PPARGC1A,median z-score split,0.541091677118,high-expression-better,541,541
+PPID,cBioPortal z-score threshold +/-2,0.698455845236,high-expression-better,29,1053
+PPIF,median z-score split,0.873753815878,high-expression-better,541,541
+PPM1D,cBioPortal z-score threshold +/-2,0.409726089447,high-expression-worse,49,1033
+PPP1R13B,cBioPortal z-score threshold +/-2,0.117516413777,high-expression-worse,15,1067
+PPP1R13L,cBioPortal z-score threshold +/-2,0.65015430585,high-expression-better,25,1057
+PPP2R1A,cBioPortal z-score threshold +/-2,0.008704894092,high-expression-worse,33,1049
+PREX1,cBioPortal z-score threshold +/-2,0.838637579152,high-expression-worse,14,1068
+PREX2,median z-score split,0.758803467649,high-expression-better,541,541
+PRKACA,cBioPortal z-score threshold +/-2,0.3532317792,high-expression-better,29,1053
+PRKACB,cBioPortal z-score threshold +/-2,0.776825308094,high-expression-better,60,1022
+PRKACG,median z-score split,0.858880492555,high-expression-worse,177,905
+PRKCA,cBioPortal z-score threshold +/-2,0.102606648417,high-expression-better,35,1047
+PRKCD,cBioPortal z-score threshold +/-2,0.334089358187,high-expression-better,28,1054
+PRKCI,cBioPortal z-score threshold +/-2,0.707299947285,high-expression-worse,32,1050
+PRKCZ,cBioPortal z-score threshold +/-2,0.646336593727,high-expression-better,17,1065
+PRKDC,cBioPortal z-score threshold +/-2,0.194630962674,high-expression-worse,25,1057
+PRL,median z-score split,0.61983070352,high-expression-better,463,619
+PRMT1,cBioPortal z-score threshold +/-2,0.022375639044,high-expression-worse,42,1040
+PRMT5,cBioPortal z-score threshold +/-2,0.761747670712,high-expression-better,34,1048
+PSEN1,cBioPortal z-score threshold +/-2,0.445257142243,high-expression-worse,17,1065
+PSMC5,cBioPortal z-score threshold +/-2,0.576667704972,high-expression-worse,38,1044
+PTEN,median z-score split,0.91057138541,high-expression-worse,541,541
+PTGES3,cBioPortal z-score threshold +/-2,6.118911e-05,high-expression-worse,30,1052
+PTGS2,median z-score split,0.014187009314,high-expression-better,541,541
+PTK2,cBioPortal z-score threshold +/-2,0.090670737527,high-expression-worse,39,1043
+PTK6,median z-score split,0.062923887138,high-expression-worse,541,541
+PTPN1,cBioPortal z-score threshold +/-2,0.585501208125,high-expression-better,48,1034
+PTPN11,cBioPortal z-score threshold +/-2,0.428502986846,high-expression-worse,17,1065
+PTPN12,cBioPortal z-score threshold +/-2,0.816814452432,high-expression-worse,28,1054
+PTPN6,cBioPortal z-score threshold +/-2,0.215512745976,high-expression-better,24,1058
+RAC2,cBioPortal z-score threshold +/-2,0.351737563512,high-expression-better,32,1050
+RAC3,cBioPortal z-score threshold +/-2,0.768855647803,high-expression-better,27,1055
+RAD17,cBioPortal z-score threshold +/-2,0.065844905922,high-expression-worse,23,1059
+RAD23B,cBioPortal z-score threshold +/-2,0.004443455792,high-expression-worse,25,1057
+RAD50,median z-score split,0.031340947973,high-expression-worse,541,541
+RAD51,median z-score split,0.038813447146,high-expression-worse,541,541
+RAD51AP1,cBioPortal z-score threshold +/-2,0.611561973046,high-expression-worse,28,1054
+RAD51B,median z-score split,0.080272859086,high-expression-better,541,541
+RAD51C,cBioPortal z-score threshold +/-2,0.628601301933,high-expression-worse,28,1054
+RAD51D,cBioPortal z-score threshold +/-2,0.702388997733,high-expression-worse,36,1046
+RAD52,cBioPortal z-score threshold +/-2,0.612386163406,high-expression-better,25,1057
+RAD9A,median z-score split,0.318069569874,high-expression-worse,541,541
+RAF1,cBioPortal z-score threshold +/-2,0.737820506259,high-expression-worse,38,1044
+RAP1A,cBioPortal z-score threshold +/-2,0.008444634445,high-expression-worse,19,1063
+RAP1B,cBioPortal z-score threshold +/-2,0.767356919671,high-expression-better,27,1055
+RAPGEF1,cBioPortal z-score threshold +/-2,0.185862922181,high-expression-better,18,1064
+RASA1,cBioPortal z-score threshold +/-2,0.058062760662,high-expression-better,26,1056
+RB1,median z-score split,0.199328722743,high-expression-worse,541,541
+RB1CC1,cBioPortal z-score threshold +/-2,0.299262048484,high-expression-worse,34,1048
+RBBP6,cBioPortal z-score threshold +/-2,0.967517939349,high-expression-worse,20,1062
+RBBP7,median z-score split,0.8616050274,high-expression-worse,541,541
+RBBP8,cBioPortal z-score threshold +/-2,0.461769220164,high-expression-better,36,1046
+RCHY1,cBioPortal z-score threshold +/-2,0.493302475972,high-expression-worse,31,1051
+RCOR1,cBioPortal z-score threshold +/-2,0.029284341781,high-expression-worse,27,1055
+RELA,cBioPortal z-score threshold +/-2,0.992604319513,high-expression-worse,30,1052
+RFC2,median z-score split,0.928016944665,high-expression-better,541,541
+RFC4,median z-score split,0.627996523858,high-expression-worse,541,541
+RHOA,cBioPortal z-score threshold +/-2,0.239432964266,high-expression-worse,20,1062
+RING1,cBioPortal z-score threshold +/-2,0.894134418828,high-expression-better,33,1049
+RMI1,cBioPortal z-score threshold +/-2,0.997998966778,high-expression-worse,21,1061
+RNF168,cBioPortal z-score threshold +/-2,0.746937424202,high-expression-worse,10,1072
+RNF2,cBioPortal z-score threshold +/-2,0.805220045391,high-expression-better,18,1064
+RNF20,cBioPortal z-score threshold +/-2,0.298836692642,high-expression-worse,17,1065
+RNF8,cBioPortal z-score threshold +/-2,0.149206966334,high-expression-better,49,1033
+ROCK1,median z-score split,0.834356371832,high-expression-better,541,541
+ROCK2,median z-score split,0.104488592538,high-expression-worse,541,541
+RPA1,cBioPortal z-score threshold +/-2,0.749049523457,high-expression-better,26,1056
+RPA2,cBioPortal z-score threshold +/-2,0.782481055573,high-expression-better,25,1057
+RPL11,cBioPortal z-score threshold +/-2,0.116096574637,high-expression-better,32,1050
+RPL5,cBioPortal z-score threshold +/-2,0.176754648473,high-expression-better,32,1050
+RPS27A,cBioPortal z-score threshold +/-2,0.0677380968,high-expression-better,46,1036
+RPS6KB1,median z-score split,0.929266411336,high-expression-worse,541,541
+RPS6KB2,cBioPortal z-score threshold +/-2,0.452565744017,high-expression-worse,36,1046
+RRAS,cBioPortal z-score threshold +/-2,0.367648776674,high-expression-better,27,1055
+RRAS2,median z-score split,0.118841611038,high-expression-worse,541,541
+RRM2B,cBioPortal z-score threshold +/-2,0.266635182888,high-expression-worse,30,1052
+RUNX2,cBioPortal z-score threshold +/-2,0.132636370173,high-expression-worse,15,1067
+RUNX3,cBioPortal z-score threshold +/-2,0.950707364324,high-expression-better,29,1053
+S100A2,median z-score split,0.13973880843,high-expression-better,541,541
+S100A4,cBioPortal z-score threshold +/-2,0.775916895347,high-expression-worse,27,1055
+S100A8,median z-score split,0.76373521503,high-expression-worse,541,541
+S100B,median z-score split,0.017776603069,high-expression-better,540,542
+SAFB,cBioPortal z-score threshold +/-2,0.958840043583,high-expression-better,22,1060
+SCO2,cBioPortal z-score threshold +/-2,0.761159099728,high-expression-better,32,1050
+SCRIB,cBioPortal z-score threshold +/-2,1.9539782e-05,high-expression-worse,26,1056
+SEM1,median z-score split,0.8144531587,high-expression-better,541,541
+SETD7,median z-score split,0.013460534883,high-expression-worse,541,541
+SETX,cBioPortal z-score threshold +/-2,0.445218911514,high-expression-worse,13,1069
+SFN,cBioPortal z-score threshold +/-2,0.011088299019,high-expression-worse,20,1062
+SH3GL2,median z-score split,0.579403001984,high-expression-worse,541,541
+SH3KBP1,cBioPortal z-score threshold +/-2,0.491512670252,high-expression-better,33,1049
+SHC1,cBioPortal z-score threshold +/-2,0.527949380608,high-expression-worse,28,1054
+SHC2,median z-score split,0.682420606199,high-expression-better,541,541
+SHC3,cBioPortal z-score threshold +/-2,0.806897075262,high-expression-worse,39,1043
+SHC4,median z-score split,0.016157777658,high-expression-better,541,541
+SIN3A,cBioPortal z-score threshold +/-2,0.332517560262,high-expression-worse,11,1071
+SIRT1,cBioPortal z-score threshold +/-2,0.945307220478,high-expression-better,12,1070
+SIRT7,cBioPortal z-score threshold +/-2,0.745033737026,high-expression-better,31,1051
+SKP2,cBioPortal z-score threshold +/-2,0.940094221355,high-expression-worse,39,1043
+SLC25A4,median z-score split,0.440967865452,high-expression-better,541,541
+SLC2A1,cBioPortal z-score threshold +/-2,0.456013669586,high-expression-better,44,1038
+SLC2A2,median z-score split,0.0483546396,high-expression-better,97,985
+SLC5A1,cBioPortal z-score threshold +/-2,0.034080416667,high-expression-worse,10,1072
+SLC6A3,median z-score split,0.005901487161,high-expression-worse,541,541
+SLCO6A1,median z-score split,0.017941202703,high-expression-worse,120,962
+SLX4,cBioPortal z-score threshold +/-2,0.545410500918,high-expression-worse,20,1062
+SMAD2,cBioPortal z-score threshold +/-2,0.066394615667,high-expression-worse,26,1056
+SMAD3,cBioPortal z-score threshold +/-2,0.604826630802,high-expression-better,16,1066
+SMAD4,cBioPortal z-score threshold +/-2,0.645012116688,high-expression-worse,16,1066
+SMARCA4,cBioPortal z-score threshold +/-2,0.029850245103,high-expression-worse,36,1046
+SMARCB1,cBioPortal z-score threshold +/-2,0.267118955968,high-expression-worse,36,1046
+SMC1A,cBioPortal z-score threshold +/-2,0.279312184633,high-expression-worse,26,1056
+SMYD2,cBioPortal z-score threshold +/-2,0.509964389972,high-expression-worse,20,1062
+SNAI1,cBioPortal z-score threshold +/-2,0.707918149827,high-expression-worse,24,1058
+SNAI2,cBioPortal z-score threshold +/-2,0.051655901592,high-expression-worse,19,1063
+SOS1,cBioPortal z-score threshold +/-2,0.987661774818,high-expression-better,24,1058
+SOS2,cBioPortal z-score threshold +/-2,0.596654189103,high-expression-better,20,1062
+SP1,median z-score split,0.71579586992,high-expression-worse,541,541
+SPO11,median z-score split,0.165500443785,high-expression-better,21,1061
+SPOP,cBioPortal z-score threshold +/-2,0.702355214843,high-expression-better,33,1049
+SQSTM1,cBioPortal z-score threshold +/-2,0.923665329648,high-expression-worse,43,1039
+SRC,cBioPortal z-score threshold +/-2,0.669175682846,high-expression-better,25,1057
+SREBF2,cBioPortal z-score threshold +/-2,0.045410559858,high-expression-worse,27,1055
+STAT1,cBioPortal z-score threshold +/-2,0.841413592159,high-expression-worse,24,1058
+STAT3,cBioPortal z-score threshold +/-2,0.23678402029,high-expression-worse,21,1061
+STAT5A,cBioPortal z-score threshold +/-2,0.523661137756,high-expression-better,15,1067
+STAT5B,cBioPortal z-score threshold +/-2,0.529772561824,high-expression-better,13,1069
+STK11,cBioPortal z-score threshold +/-2,0.39306277733,high-expression-better,22,1060
+STRN,median z-score split,0.974415623302,high-expression-worse,541,541
+STUB1,cBioPortal z-score threshold +/-2,0.33757569044,high-expression-better,28,1054
+SUMO1,cBioPortal z-score threshold +/-2,0.10783554877,high-expression-better,37,1045
+SUMO2,median z-score split,0.344381570633,high-expression-better,541,541
+SUMO4,cBioPortal z-score threshold +/-2,0.441037360193,high-expression-better,27,1055
+SWSAP1,cBioPortal z-score threshold +/-2,0.486739997876,high-expression-better,34,1048
+SYCP3,median z-score split,0.588837784361,high-expression-worse,308,774
+SYK,median z-score split,0.625797526975,high-expression-worse,540,542
+SYNJ1,cBioPortal z-score threshold +/-2,0.039517981018,high-expression-worse,24,1058
+SYNJ2,cBioPortal z-score threshold +/-2,0.140649872616,high-expression-worse,11,1071
+TADA3,cBioPortal z-score threshold +/-2,0.34586845552,high-expression-worse,33,1049
+TAF1,median z-score split,0.347990859215,high-expression-worse,541,541
+TAF9,cBioPortal z-score threshold +/-2,0.924808895387,high-expression-better,24,1058
+TBP,cBioPortal z-score threshold +/-2,0.946996103245,high-expression-worse,35,1047
+TCHP,cBioPortal z-score threshold +/-2,0.323490772805,high-expression-worse,21,1061
+TELO2,cBioPortal z-score threshold +/-2,0.658543300174,high-expression-better,31,1051
+TERF1,cBioPortal z-score threshold +/-2,0.085281094231,high-expression-worse,43,1039
+TERF2,cBioPortal z-score threshold +/-2,0.021036703303,high-expression-worse,32,1050
+TERT,median z-score split,0.591572020088,high-expression-better,541,541
+TFAM,cBioPortal z-score threshold +/-2,0.619097031792,high-expression-worse,32,1050
+TFAP2A,cBioPortal z-score threshold +/-2,0.241331449392,high-expression-better,10,1072
+TFAP2C,cBioPortal z-score threshold +/-2,0.350671270256,high-expression-worse,17,1065
+TFF1,median z-score split,0.040722059681,high-expression-better,541,541
+TGFA,cBioPortal z-score threshold +/-2,0.81099160367,high-expression-worse,27,1055
+TGFB1,cBioPortal z-score threshold +/-2,0.636905060619,high-expression-better,13,1069
+THRA,cBioPortal z-score threshold +/-2,0.967795151089,high-expression-worse,39,1043
+THRB,median z-score split,0.727442414854,high-expression-worse,541,541
+TIGAR,cBioPortal z-score threshold +/-2,0.75693176351,high-expression-worse,25,1057
+TJP1,median z-score split,0.301530215004,high-expression-worse,541,541
+TLR2,cBioPortal z-score threshold +/-2,0.835758518203,high-expression-worse,30,1052
+TLR4,cBioPortal z-score threshold +/-2,0.297162749337,high-expression-worse,16,1066
+TNFRSF10B,cBioPortal z-score threshold +/-2,0.924861206166,high-expression-worse,21,1061
+TNKS,cBioPortal z-score threshold +/-2,0.989707425105,high-expression-better,16,1066
+TNKS2,cBioPortal z-score threshold +/-2,0.460975009005,high-expression-worse,10,1072
+TNS3,cBioPortal z-score threshold +/-2,0.18168646125,high-expression-better,19,1063
+TOP1,cBioPortal z-score threshold +/-2,0.538072187842,high-expression-worse,12,1070
+TOP3A,cBioPortal z-score threshold +/-2,0.289882550364,high-expression-better,29,1053
+TOPBP1,cBioPortal z-score threshold +/-2,0.006063691743,high-expression-worse,32,1050
+TOPORS,cBioPortal z-score threshold +/-2,0.779048263396,high-expression-worse,15,1067
+TP53,cBioPortal z-score threshold +/-2,0.436845981395,high-expression-worse,10,1072
+TP53AIP1,median z-score split,1.5736982e-05,high-expression-better,541,541
+TP53BP1,cBioPortal z-score threshold +/-2,0.126137789116,high-expression-worse,13,1069
+TP53BP2,cBioPortal z-score threshold +/-2,0.592080139487,high-expression-worse,30,1052
+TP53I3,cBioPortal z-score threshold +/-2,0.42039434252,high-expression-better,23,1059
+TP53INP1,cBioPortal z-score threshold +/-2,0.185152702273,high-expression-worse,17,1065
+TP53RK,cBioPortal z-score threshold +/-2,0.026434930995,high-expression-worse,36,1046
+TP63,median z-score split,0.081510402941,high-expression-better,541,541
+TP73,median z-score split,0.138358732317,high-expression-better,541,541
+TPX2,median z-score split,0.212949813712,high-expression-worse,541,541
+TRAF2,cBioPortal z-score threshold +/-2,0.494229674498,high-expression-better,31,1051
+TRAF6,cBioPortal z-score threshold +/-2,0.293425795037,high-expression-better,13,1069
+TRIM21,cBioPortal z-score threshold +/-2,0.608721991075,high-expression-worse,28,1054
+TRIM24,cBioPortal z-score threshold +/-2,0.68625051733,high-expression-worse,32,1050
+TRIM27,cBioPortal z-score threshold +/-2,0.502801518465,high-expression-better,30,1052
+TRIM28,cBioPortal z-score threshold +/-2,0.228724652417,high-expression-better,36,1046
+TRRAP,cBioPortal z-score threshold +/-2,0.48456266255,high-expression-better,19,1063
+TUBG1,cBioPortal z-score threshold +/-2,0.683605462948,high-expression-better,30,1052
+TUBGCP4,cBioPortal z-score threshold +/-2,0.265998528233,high-expression-worse,10,1072
+TUBGCP5,cBioPortal z-score threshold +/-2,0.009584287333,high-expression-worse,22,1060
+TUBGCP6,cBioPortal z-score threshold +/-2,0.388220478958,high-expression-better,29,1053
+TWIST1,cBioPortal z-score threshold +/-2,0.194644447794,high-expression-better,23,1059
+TXK,cBioPortal z-score threshold +/-2,0.274816599075,high-expression-better,39,1043
+UBA52,cBioPortal z-score threshold +/-2,0.152261641812,high-expression-better,53,1029
+UBASH3B,median z-score split,0.678108465427,high-expression-better,541,541
+UBB,cBioPortal z-score threshold +/-2,0.180601038856,high-expression-worse,19,1063
+UBC,cBioPortal z-score threshold +/-2,0.185815893975,high-expression-better,32,1050
+UBE2C,median z-score split,0.056504666231,high-expression-worse,541,541
+UBE2D1,cBioPortal z-score threshold +/-2,0.495638105376,high-expression-worse,34,1048
+UBE2D3,cBioPortal z-score threshold +/-2,0.00124443747,high-expression-worse,30,1052
+UBE2I,cBioPortal z-score threshold +/-2,0.789819149283,high-expression-better,32,1050
+UBE2K,cBioPortal z-score threshold +/-2,0.147595327846,high-expression-worse,31,1051
+UBE2N,cBioPortal z-score threshold +/-2,0.664039405119,high-expression-worse,36,1046
+UBE2S,median z-score split,0.936745349411,high-expression-worse,541,541
+UBE3A,cBioPortal z-score threshold +/-2,0.096921417263,high-expression-worse,21,1061
+UIMC1,cBioPortal z-score threshold +/-2,0.746420235472,high-expression-better,23,1059
+UQCRFS1,median z-score split,0.25739576094,high-expression-worse,541,541
+USP10,cBioPortal z-score threshold +/-2,0.812483889869,high-expression-worse,33,1049
+USP11,cBioPortal z-score threshold +/-2,0.379234142239,high-expression-better,36,1046
+USP13,cBioPortal z-score threshold +/-2,0.243027928398,high-expression-worse,32,1050
+USP7,cBioPortal z-score threshold +/-2,0.349560304777,high-expression-worse,25,1057
+USP8,cBioPortal z-score threshold +/-2,0.002532616935,high-expression-worse,12,1070
+VAV1,cBioPortal z-score threshold +/-2,0.078898549081,high-expression-better,16,1066
+VAV2,cBioPortal z-score threshold +/-2,0.07619738649,high-expression-worse,31,1051
+VAV3,median z-score split,0.270471114765,high-expression-better,541,541
+VCL,cBioPortal z-score threshold +/-2,0.191725339216,high-expression-better,22,1060
+WRN,cBioPortal z-score threshold +/-2,0.827181092263,high-expression-better,22,1060
+WT1,median z-score split,0.30087800773,high-expression-worse,541,541
+WWOX,median z-score split,0.027330512582,high-expression-worse,541,541
+WWP2,cBioPortal z-score threshold +/-2,0.843345289793,high-expression-better,43,1039
+XIAP,cBioPortal z-score threshold +/-2,0.810330085076,high-expression-better,15,1067
+XPA,cBioPortal z-score threshold +/-2,0.285317318812,high-expression-better,15,1067
+XPC,median z-score split,0.870709384039,high-expression-better,541,541
+XPO1,cBioPortal z-score threshold +/-2,0.08794452666,high-expression-worse,29,1053
+XRCC2,cBioPortal z-score threshold +/-2,0.423850552708,high-expression-worse,13,1069
+XRCC3,cBioPortal z-score threshold +/-2,0.657837806574,high-expression-better,27,1055
+XRCC4,cBioPortal z-score threshold +/-2,6.415115e-06,high-expression-worse,19,1063
+XRCC5,cBioPortal z-score threshold +/-2,0.061463743556,high-expression-worse,25,1057
+XRCC6,cBioPortal z-score threshold +/-2,0.310967571649,high-expression-worse,33,1049
+YBX1,median z-score split,0.473028588719,high-expression-better,541,541
+YES1,cBioPortal z-score threshold +/-2,0.919984351743,high-expression-better,29,1053
+YWHAB,cBioPortal z-score threshold +/-2,0.009772088595,high-expression-worse,35,1047
+YWHAE,cBioPortal z-score threshold +/-2,0.550050625632,high-expression-worse,29,1053
+YWHAG,cBioPortal z-score threshold +/-2,0.979513786909,high-expression-better,23,1059
+YWHAZ,median z-score split,0.104407552236,high-expression-worse,541,541
+YY1,cBioPortal z-score threshold +/-2,0.467980074964,high-expression-better,28,1054
+ZAP70,cBioPortal z-score threshold +/-2,0.453461790053,high-expression-better,23,1059
+ZEB1,median z-score split,0.734647534487,high-expression-better,541,541
+ZEB2,cBioPortal z-score threshold +/-2,0.949736319728,high-expression-worse,13,1069
+ZNF350,cBioPortal z-score threshold +/-2,0.927272805766,high-expression-worse,28,1054
+ZNF385A,cBioPortal z-score threshold +/-2,0.384710062988,high-expression-better,12,1070
+ZPR1,cBioPortal z-score threshold +/-2,0.302374638682,high-expression-worse,39,1043
+ZSWIM7,cBioPortal z-score threshold +/-2,0.059235279271,high-expression-worse,25,1057

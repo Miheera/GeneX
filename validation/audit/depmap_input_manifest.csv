@@ -1,0 +1,5 @@
+filename,path,role,bytes,sha256,release
+Model.csv,D:\GenX\Model.csv,model metadata,697455,ea4e0b2a3bc806f81df62689a5ae75f1a100135727a3d7b8a4c7ccc8815183f8,DepMap Public 26Q1 (user-supplied download provenance)
+CRISPRGeneEffect.csv,D:\GenX\CRISPRGeneEffect.csv,Chronos CRISPR gene effect matrix,440646050,e610a4cefb13a82b5b256b47eb08b63ff14843f8dbd0fb164bc0a32688e5b89e,DepMap Public 26Q1 (user-supplied download provenance)
+hgnc_complete_set.txt,D:\GenX\Major Project\validation\metadata\hgnc_complete_set.txt,identifier crosswalk,16947244,3e5da5b757afce6cae333d3e6c97a59ff3aadfb13da1c70f89d9a8f252b9e7ec,not applicable
+expanded_nodes_t900.csv,D:\GenX\Major Project\backend\data\processed\expanded_nodes_t900.csv,frozen GenX node list,11459,6cd3ce98705a2ecbab4a8bdda6e3d0e330b2eae14756e90d6cd2df64e91adfc2,not applicable

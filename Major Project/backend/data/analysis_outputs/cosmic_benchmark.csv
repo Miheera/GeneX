@@ -1,0 +1,10 @@
+rank_by,top_n,precision,recall,f1,n_positives_in_graph,n_positives_total,n_positives_excluded_from_graph,methodology_note
+betweenness,10,0.600000,0.428571,0.500000,14,53,39,Unknown: graph-universe construction provenance does not establish whether COSMIC genes were included. Interpret this benchmark cautiously.
+betweenness,20,0.550000,0.785714,0.647059,14,53,39,Unknown: graph-universe construction provenance does not establish whether COSMIC genes were included. Interpret this benchmark cautiously.
+betweenness,50,0.411765,1.000000,0.583333,14,53,39,Unknown: graph-universe construction provenance does not establish whether COSMIC genes were included. Interpret this benchmark cautiously.
+degree,10,0.600000,0.428571,0.500000,14,53,39,Unknown: graph-universe construction provenance does not establish whether COSMIC genes were included. Interpret this benchmark cautiously.
+degree,20,0.550000,0.785714,0.647059,14,53,39,Unknown: graph-universe construction provenance does not establish whether COSMIC genes were included. Interpret this benchmark cautiously.
+degree,50,0.411765,1.000000,0.583333,14,53,39,Unknown: graph-universe construction provenance does not establish whether COSMIC genes were included. Interpret this benchmark cautiously.
+impact_score,10,0.600000,0.428571,0.500000,14,53,39,Unknown: graph-universe construction provenance does not establish whether COSMIC genes were included. Interpret this benchmark cautiously.
+impact_score,20,0.550000,0.785714,0.647059,14,53,39,Unknown: graph-universe construction provenance does not establish whether COSMIC genes were included. Interpret this benchmark cautiously.
+impact_score,50,0.411765,1.000000,0.583333,14,53,39,Unknown: graph-universe construction provenance does not establish whether COSMIC genes were included. Interpret this benchmark cautiously.

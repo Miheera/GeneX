@@ -20,10 +20,12 @@ import networkx as nx
 try:
     import graph_loader
     import perturbation
+    from path_cost import require_positive_betweenness_costs
 except ModuleNotFoundError:
     sys.path.insert(0, str(Path(__file__).parents[1]))
     import graph_loader
     import perturbation
+    from path_cost import require_positive_betweenness_costs
 
 RankMethod = Literal["betweenness", "degree", "impact_score"]
 OUTPUT_COLUMNS = [
@@ -78,6 +80,8 @@ def _parse_bool(value: str) -> bool:
 
 def _rankings(graph: nx.Graph) -> dict[str, dict[str, float]]:
     path_weight = "path_weight" if any("path_weight" in data for _, _, data in graph.edges(data=True)) else None
+    if path_weight is not None:
+        require_positive_betweenness_costs(graph)
     betweenness = nx.betweenness_centrality(graph, weight=path_weight, normalized=True)
     degree = {node: float(graph.degree(node)) for node in graph}
     perturbation.precompute_baseline(graph)

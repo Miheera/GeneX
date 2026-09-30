@@ -1,0 +1,27 @@
+quantity,result
+GenX nodes,881
+GenX genes with unique HGNC/Entrez mapping,879
+GenX genes present as unique columns in DepMap matrix,858
+GenX genes absent from DepMap matrix,21
+GenX genes without unambiguous HGNC/Entrez mapping,2
+GenX genes with numeric dependency data in breast cohort,858
+Total DepMap models in Model.csv,2154
+Model.csv rows with valid model IDs,2154
+Breast-cancer models (frozen metadata rule),83
+Breast models represented in CRISPRGeneEffect.csv,50
+Breast models with at least one numeric mapped GenX dependency value,50
+GenX x breast matrix cells (881 x cohort size),73123
+Mapped GenX x breast cells expected,71214
+Numeric mapped GenX x breast cells,42281
+Missing mapped GenX x breast cells (including models without a matrix row),28933
+Missing cells across full 881 x breast cohort grid,30842
+Mapped columns expected in breast models present in matrix,42900
+Missing mapped cells among breast models present in matrix,619
+Invalid/nonfinite/nonnumeric mapped GenX x breast cells,0
+Matrix rows (models),1208
+Unique matrix model IDs,1208
+Duplicate matrix model IDs,0
+Duplicate matrix gene Entrez identifiers,0
+Duplicate GenX to DepMap gene mappings,0
+Potential DepMap validation targets (mapped and >=1 numeric breast model),858
+Breast-lineage models excluded by exact primary-disease rule,13
