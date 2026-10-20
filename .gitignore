@@ -12,6 +12,10 @@ MANIFEST
 
 # -- Test / coverage ------------------------------------------------------------
 .pytest_cache/
+.pytest-cache-migration-leftover/
+.pytest-temp/
+**/pytest-tmp-*/
+**/_pytest_tmp/
 .coverage
 .coverage.*
 htmlcov/
@@ -23,9 +27,12 @@ coverage.xml
 # -- Virtual environments -------------------------------------------------------
 venv/
 .venv/
+.venv-*/
 env/
 ENV/
 .env
+.env.*
+!.env.example
 
 # -- IDEs & editors -------------------------------------------------------------
 .vscode/
@@ -62,6 +69,10 @@ desktop.ini
 *.tmp
 *.bak
 
-# -- Large raw data (too big for git; see Major Project/backend/data/DATA_SOURCES.md) -----
+# -- Large raw data (too big for git; see backend/data/DATA_SOURCES.md) -----
 major_project_dataset/
-Major Project/backend/data/raw/string/
+backend/data/raw/string/
+.auth_secret
+*.pem
+*.key
+backend/data/private/
